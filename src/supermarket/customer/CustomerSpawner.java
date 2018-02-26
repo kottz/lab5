@@ -1,5 +1,9 @@
 package supermarket.customer;
 
+/**
+ * Används för att skapa kunder med olika id:n. 
+ *
+ */
 public class CustomerSpawner {
 
 	private int counter;
