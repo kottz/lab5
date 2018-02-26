@@ -1,10 +1,14 @@
 package supermarket.customer;
 
-class Customer {
+public class Customer {
 
 	private int id;
 	
-	public Customer(int id) {
+	Customer(int id) {
 		this.id = id;
+	}
+	
+	public int getId() {
+		return this.id;
 	}
 }
