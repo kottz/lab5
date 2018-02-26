@@ -1,5 +1,9 @@
 package sim;
 
+/**
+ * Mainmetod för att köra simulering
+ *
+ */
 public class Main {
 
 	EventQueue eventQ = new EventQueue();
