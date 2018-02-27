@@ -7,14 +7,16 @@ package sim;
 public class Simulator {
 
 	EventQueue eventQ;
+	ettsupermarketState state;
 	
-	public Simulator(EventQueue eventQ) {
+	public Simulator(EventQueue eventQ, ettsupermarketState state) {
 		this.eventQ = eventQ;
+		this.state = state;
 	}
 	
-	public void simulate() {
+	public void run() {
 		
-		while(!eventQ.isEmpty()) {
+		while(!eventQ.isEmpty() && !state.nödbroms) {
 			eventQ.getfirst().körmig();
 			eventQ.removefirst();
 		}

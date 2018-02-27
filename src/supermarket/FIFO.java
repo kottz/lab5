@@ -2,7 +2,6 @@ package supermarket;
 
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import supermarket.customer.Customer;
 import supermarket.customer.CustomerSpawner;
