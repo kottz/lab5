@@ -1,4 +1,5 @@
 package sim;
+import supermarket.event.*;
 
 /**
  * Mainmetod för att köra simulering
@@ -26,10 +27,18 @@ public class Main {
 	emsupermarketView view = new ensupermarketView();
 	state.addObserver(view);
 	
+	//Lägger till ett startEvent för att dra igång simuleringen.
+	Event start = new StartEvent(); //TO-DO, konstruktorerna kommer ta några argument.
+	Event close = new CloseEvent();
+	Event stop = new StopEvent();
+	eq.addEvent(start);
+	eq.addEvent(close);
+	eq.addEvent(stop);
+	
 	Simulator simulator = new Simulator(eq, state);
 	
 	public static void main(String[] args) {
-		
-		simulator.run();
+		Simulator sim1 = new Simulator(eq, state);
+		sim1.run();
 	}
 }
