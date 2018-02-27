@@ -21,12 +21,12 @@ public class Main {
 	private long seed = 1234; //För randomobjektet
 	
 	
-	EventQueue eventQ = new EventQueue();
+	EventQueue eq = new EventQueue();
 	ettsupermarketState state = new ettsupermarketState(); //Denna konstruktor måste ta några parametrar
 	emsupermarketView view = new ensupermarketView();
 	state.addObserver(view);
 	
-	Simulator simulator = new Simulator(eventQ, state);
+	Simulator simulator = new Simulator(eq, state);
 	
 	public static void main(String[] args) {
 		
