@@ -13,7 +13,7 @@ public class ShoppingState extends SimulatorStateADT {
 	private UniformRandomStream URSPay;
 	private UniformRandomStream URSFetch;
 	
-	private int[] checkouts;
+	public int numberOfCheckouts;
 	private int maxCustomers;
 	private int completedCheckouts = 0;
 	private int missedCustomers = 0;
@@ -44,15 +44,11 @@ public class ShoppingState extends SimulatorStateADT {
 		this.Kmax = Kmax;
 		
 		customersShopping = new ArrayList<Customer>();
-		checkouts = new int[numberOfCheckouts];
+		this.numberOfCheckouts = numberOfCheckouts;
 		
 		ERS = new ExponentialRandomStream(lamda, seed);
 		URSPay = new UniformRandomStream(Kmin, Kmax, seed);
 		URSFetch = new UniformRandomStream(Pmin, Pmax, seed);
-		
-		for(int i = 0; i < checkouts.length; i++) {
-			checkouts[i] = i+1;
-		}
 	}
 	
 	protected double calculateTime() {
