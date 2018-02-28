@@ -21,7 +21,7 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	private boolean open;
 	
-	private FIFO queue;
+	public FIFO queue;
 	
 	private Customer[] customersShopping;
 	private CustomerSpawner factory;
