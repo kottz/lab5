@@ -87,7 +87,9 @@ public class ShoppingState extends SimulatorStateADT {
 		}
 	}
 	
-	public void addCustomer()
+	public void addCustomer(Customer c){
+		customersShopping.add(c);
+	}
 	
 	public boolean isStarted(){
 		return started;
