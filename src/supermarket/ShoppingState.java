@@ -26,6 +26,10 @@ public class ShoppingState extends SimulatorStateADT {
 	private double Kmin;
 	private double Kmax;
 	
+	// Nya
+	private double totalQueueTime;
+	public boolean isRunning =false; // Är simulationen igång?
+	
 	private String eventName = "";
 	
 	private boolean open;
@@ -56,15 +60,15 @@ public class ShoppingState extends SimulatorStateADT {
 		queue = new FIFO();
 	}
 	
-	private double calculateArrivalTime() {
+	public double calculateArrivalTime() {
 		return ERS.next();
 	}
 	
-	private double calculateShoppingTime() {
+	public double calculateShoppingTime() {
 		return URSFetch.next();
 	}
 	
-	private double calculateCheckoutTime() {
+	public double calculateCheckoutTime() {
 		return URSPay.next();
 	}
 	
@@ -120,6 +124,13 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	public int getCompletedCheckouts(){
 		return completedCheckouts;
+	}
+	public double getTotalQueueTime() {
+		return totalQueueTime;
+	}
+	public double updateTotalQueueTime(double updateTime) {
+		return (totalQueueTime+=updateTime);
+		
 	}
 
 	public static void main(String[] args) {

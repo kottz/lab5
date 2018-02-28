@@ -8,13 +8,17 @@ import sim.SortedSequence;
  *
  */
 public class StopEvent extends Event {
+	
+	public StopEvent() {
+		
+		//this.time = ?;
+	}
 
 	@Override
 	public void execute(SortedSequence seq, ShoppingState state) {
-		
-//		state.nödbroms = true;
-	//	System.exit(0);
-		seq.sortEventQueue(this);
+
+		state.isRunning=false;
+		state.updateTotalQueueTime(this.time);
 		state.notifyObservers();
 		state.hasChanged();
 		
