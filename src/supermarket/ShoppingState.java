@@ -18,7 +18,7 @@ public class ShoppingState extends SimulatorStateADT {
 	private int maxCustomers;
 	private int completedCheckouts = 0;
 	public int missedCustomers = 0;
-	private int idleCheckoutsTime = 0;
+	public double timeOpen;
 	private double lamda;
 	private long seed;
 	private double Pmin;
@@ -35,7 +35,7 @@ public class ShoppingState extends SimulatorStateADT {
 	public ArrayList<Customer> customersShopping;
 	public CustomerSpawner factory;
 	
-	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax) {
+	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax, double timeOpen) {
 		this.maxCustomers = maxCustomers;
 		this.lamda = lamda;
 		this.seed = seed;
@@ -43,6 +43,7 @@ public class ShoppingState extends SimulatorStateADT {
 		this.Pmax = Pmax;
 		this.Kmin = Kmin;
 		this.Kmax = Kmax;
+		this.timeOpen = timeOpen;
 		
 		customersShopping = new ArrayList<Customer>();
 		this.numberOfCheckouts = numberOfCheckouts;
@@ -51,6 +52,8 @@ public class ShoppingState extends SimulatorStateADT {
 		ERS = new ExponentialRandomStream(lamda, seed);
 		URSPay = new UniformRandomStream(Kmin, Kmax, seed);
 		URSFetch = new UniformRandomStream(Pmin, Pmax, seed);
+		
+		queue = new FIFO();
 	}
 	
 	private double calculateArrivalTime() {
@@ -109,6 +112,14 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	public int getNumberOfCustomers(){
 		return customersShopping.size();
+	}
+	
+	public void completedCheckout(){
+		completedCheckouts++;
+	}
+	
+	public int getCompletedCheckouts(){
+		return completedCheckouts;
 	}
 
 	public static void main(String[] args) {
