@@ -17,7 +17,7 @@ public class ShoppingState extends SimulatorStateADT {
 	public int idleCheckouts;
 	private int maxCustomers;
 	private int completedCheckouts = 0;
-	private int missedCustomers = 0;
+	public int missedCustomers = 0;
 	private int idleCheckoutsTime = 0;
 	private double lamda;
 	private long seed;
@@ -53,21 +53,20 @@ public class ShoppingState extends SimulatorStateADT {
 		URSFetch = new UniformRandomStream(Pmin, Pmax, seed);
 	}
 	
-	protected double calculateTime() {
+	public double calculateTime() {
 		return calculatedTime;
 	}
 	
 	private double calculateArrivalTime() {
 		calculatedTime = ERS.next();
-		return calculatedTime;
 	}
 	
-	private int calculateShoppingTime() {
-		return 1;
+	private void calculateShoppingTime() {
+		calculatedTime = URSFetch.next();
 	}
 	
-	private int calculateCheckoutTime() {
-		return 1;
+	private void calculateCheckoutTime() {
+		calculatedTime = URSPay.next();
 	}
 	
 	public void start() {
@@ -87,10 +86,12 @@ public class ShoppingState extends SimulatorStateADT {
 	public void removeCustomer(Customer c){
 		for(Customer cust: customersShopping){
 			if(cust.getId() == c.getId()){
-				
+				customersShopping.remove(cust);
 			}
 		}
 	}
+	
+	public void addCustomer()
 	
 	public boolean isStarted(){
 		return started;
