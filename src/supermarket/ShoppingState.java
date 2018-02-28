@@ -8,7 +8,8 @@ import supermarket.customer.CustomerSpawner;
 public class ShoppingState extends SimulatorStateADT {
 	
 	private ExponentialRandomStream ERS;
-	private UniformRandomStream URS;
+	private UniformRandomStream URSPay;
+	private UniformRandomStream URSFetch;
 	
 	private int[] checkouts;
 	private int maxCustomers;
@@ -28,7 +29,7 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	private FIFO queue;
 	
-	private Customer[] customersShopping;
+	public Customer[] customersShopping;
 	private CustomerSpawner factory;
 	
 	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax) {
@@ -43,19 +44,22 @@ public class ShoppingState extends SimulatorStateADT {
 		customersShopping = new Customer[maxCustomers];
 		checkouts = new int[numberOfCheckouts];
 		
-		ERS = new 
+		ERS = new ExponentialRandomStream(lamda, seed);
+		URSPay = new UniformRandomStream(Kmin, Kmax, seed);
+		URSFetch = new UniformRandomStream(Pmin, Pmax, seed);
 		
 		for(int i = 0; i < checkouts.length; i++) {
 			checkouts[i] = i+1;
 		}
 	}
 	
-	protected int calculateTime() {
+	protected double calculateTime() {
 		return calculatedTime;
 	}
 	
-	private int calculateArrivalTime() {
-		return 1;
+	private double calculateArrivalTime() {
+		calculatedTime = ERS.next();
+		return calculatedTime;
 	}
 	
 	private int calculateShoppingTime() {
@@ -80,37 +84,11 @@ public class ShoppingState extends SimulatorStateADT {
 		notifyObservers();
 	}
 	
-	public void leave() {
-		eventName = "Leave event";
-		setChanged();
-		notifyObservers();
-	}
-	
-	public void arrive() {
-		eventName = "Arrive event";
-		calculatedTime = calculateArrivalTime();
-		setChanged();
-		notifyObservers();
-	}
-	
-	public void pay(){
-		eventName = "Pay event";
-		calculatedTime = calculateCheckoutTime();
-		setChanged();
-		notifyObservers();
-	}
-	
-	public void close(){
-		eventName = "Close event";
-		setChanged();
-		notifyObservers();
-	}
-	
-	public boolean ifStarted(){
+	public boolean isStarted(){
 		return started;
 	}
 	
-	public boolean ifOpen(){
+	public boolean isOpen(){
 		return open;
 	}
 	
@@ -120,6 +98,10 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	public String getEventName(){
 		return eventName;
+	}
+	
+	public int getNumberOfCustomers(){
+		return customersShopping.length;
 	}
 
 	public static void main(String[] args) {
