@@ -1,5 +1,7 @@
 package supermarket;
 
+import java.util.ArrayList;
+
 import random.*;
 import sim.SimulatorStateADT;
 import supermarket.customer.Customer;
@@ -29,7 +31,7 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	private FIFO queue;
 	
-	public Customer[] customersShopping;
+	public ArrayList<Customer> customersShopping;
 	private CustomerSpawner factory;
 	
 	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax) {
@@ -41,7 +43,7 @@ public class ShoppingState extends SimulatorStateADT {
 		this.Kmin = Kmin;
 		this.Kmax = Kmax;
 		
-		customersShopping = new Customer[maxCustomers];
+		customersShopping = new ArrayList<Customer>();
 		checkouts = new int[numberOfCheckouts];
 		
 		ERS = new ExponentialRandomStream(lamda, seed);
@@ -84,6 +86,14 @@ public class ShoppingState extends SimulatorStateADT {
 		notifyObservers();
 	}
 	
+	public void removeCustomer(Customer c){
+		for(Customer cust: customersShopping){
+			if(cust.getId() == c.getId()){
+				
+			}
+		}
+	}
+	
 	public boolean isStarted(){
 		return started;
 	}
@@ -101,7 +111,7 @@ public class ShoppingState extends SimulatorStateADT {
 	}
 	
 	public int getNumberOfCustomers(){
-		return customersShopping.length;
+		return customersShopping.size();
 	}
 
 	public static void main(String[] args) {
