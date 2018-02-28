@@ -1,5 +1,7 @@
 package sim;
 
+import supermarket.ShoppingState;
+
 /**
  * 
  * @author Oskar

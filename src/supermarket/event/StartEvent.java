@@ -1,6 +1,6 @@
 package supermarket.event;
 import sim.Event;
-import sim.ShoppingState;
+import supermarket.ShoppingState;
 import sim.SimulatorStateADT;
 import sim.SortedSequence;
 import supermarket.customer.CustomerSpawner;
@@ -9,15 +9,15 @@ import supermarket.customer.CustomerSpawner;
  *
  */
 public class StartEvent extends Event {
-	CustomerSpawner c = new CustomerSpawner();
 
 	@Override
 	public void execute(SortedSequence seq, ShoppingState state) {
-		
-		state.queue.add(c.createCustomer());;	
+		this.time = 0;
+		state.queue.add(state.factory.createCustomer());	
 		seq.sortEventQueue(this);
 		state.notifyObservers();
 		state.hasChanged();
+		
 		
 		
 	}

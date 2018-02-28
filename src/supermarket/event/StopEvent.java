@@ -1,6 +1,6 @@
 package supermarket.event;
 import sim.Event;
-import sim.ShoppingState;
+import supermarket.ShoppingState;
 import sim.SimulatorStateADT;
 import sim.SortedSequence;
 /**
@@ -11,9 +11,13 @@ public class StopEvent extends Event {
 
 	@Override
 	public void execute(SortedSequence seq, ShoppingState state) {
+		
+//		state.nödbroms = true;
+	//	System.exit(0);
 		seq.sortEventQueue(this);
 		state.notifyObservers();
 		state.hasChanged();
+		
 		
 		
 	}
