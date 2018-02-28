@@ -53,20 +53,16 @@ public class ShoppingState extends SimulatorStateADT {
 		URSFetch = new UniformRandomStream(Pmin, Pmax, seed);
 	}
 	
-	public double calculateTime() {
-		return calculatedTime;
-	}
-	
 	private double calculateArrivalTime() {
-		calculatedTime = ERS.next();
+		return ERS.next();
 	}
 	
-	private void calculateShoppingTime() {
-		calculatedTime = URSFetch.next();
+	private double calculateShoppingTime() {
+		return URSFetch.next();
 	}
 	
-	private void calculateCheckoutTime() {
-		calculatedTime = URSPay.next();
+	private double calculateCheckoutTime() {
+		return URSPay.next();
 	}
 	
 	public void start() {
