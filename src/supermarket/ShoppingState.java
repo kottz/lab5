@@ -29,7 +29,7 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	private boolean open;
 	
-	private FIFO queue;
+	public FIFO queue;
 	
 	public ArrayList<Customer> customersShopping;
 	private CustomerSpawner factory;
