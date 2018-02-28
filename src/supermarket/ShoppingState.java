@@ -14,6 +14,7 @@ public class ShoppingState extends SimulatorStateADT {
 	private UniformRandomStream URSFetch;
 	
 	public int numberOfCheckouts;
+	public int idleCheckouts;
 	private int maxCustomers;
 	private int completedCheckouts = 0;
 	private int missedCustomers = 0;
@@ -32,7 +33,7 @@ public class ShoppingState extends SimulatorStateADT {
 	public FIFO queue;
 	
 	public ArrayList<Customer> customersShopping;
-	private CustomerSpawner factory;
+	public CustomerSpawner factory;
 	
 	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax) {
 		this.maxCustomers = maxCustomers;
@@ -45,6 +46,7 @@ public class ShoppingState extends SimulatorStateADT {
 		
 		customersShopping = new ArrayList<Customer>();
 		this.numberOfCheckouts = numberOfCheckouts;
+		this.idleCheckouts = this.numberOfCheckouts;
 		
 		ERS = new ExponentialRandomStream(lamda, seed);
 		URSPay = new UniformRandomStream(Kmin, Kmax, seed);
