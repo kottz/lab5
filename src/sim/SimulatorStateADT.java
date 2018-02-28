@@ -1,11 +1,11 @@
-package mainSate;
+package sim;
 
 import java.util.Observable;
 
 public abstract class SimulatorStateADT extends Observable {
 	
-	boolean started = false;
-	int calculatedTime = 0;
+	protected boolean started = false;
+	protected int calculatedTime = 0;
 	
 	abstract protected void start();
 	

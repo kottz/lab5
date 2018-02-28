@@ -1,31 +1,46 @@
 package sim;
 
+import random.*;
 import supermarket.FIFO;
 import supermarket.customer.Customer;
 import supermarket.customer.CustomerSpawner;
 
 public class ShoppingState extends SimulatorStateADT {
 	
-	int[] checkouts;
+	private ExponentialRandomStream ERS;
+	private UniformRandomStream URS;
 	
-	boolean open;
+	private int[] checkouts;
+	private int maxCustomers;
+	private int completedCheckouts = 0;
+	private int missedCustomers = 0;
+	private int idleCheckoutsTime = 0;
+	//private int arrivalTime = 0;
+	//private int shoppingTime = 0;
+	//private int checkoutTime = 0;
 	
-	FIFO queue;
+	private boolean open;
 	
-	Customer[] customersShopping;
-	CustomerSpawner factory;
+	private FIFO queue;
 	
-	public ShoppingState() {
-		
+	private Customer[] customersShopping;
+	private CustomerSpawner factory;
+	
+	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts) {
+		this.maxCustomers = maxCustomers;
+		checkouts = new int[numberOfCheckouts];
+		for(int i = 0; i < checkouts.length; i++) {
+			checkouts[i] = i+1;
+		}
 	}
 	
-	protected void start() {
+	public void start() {
 		started = true;
 		setChanged();
 		notifyObservers();
 	}
 	
-	protected void stop() {
+	public void stop() {
 		started = false;
 		setChanged();
 		notifyObservers();
@@ -35,12 +50,24 @@ public class ShoppingState extends SimulatorStateADT {
 		return calculatedTime;
 	}
 	
-	protected void leave() {
+	protected int calculateArrivalTime() {
+		return 1;
+	}
+	
+	protected int calculateShoppingTime() {
+		return 1;
+	}
+	
+	protected int calculateCheckoutTime() {
+		return 1;
+	}
+	
+	public void leave() {
 		setChanged();
 		notifyObservers();
 	}
 	
-	protected void arrive() {
+	public void arrive() {
 		setChanged();
 		notifyObservers();
 	}
