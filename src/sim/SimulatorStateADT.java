@@ -10,6 +10,4 @@ public abstract class SimulatorStateADT extends Observable {
 	abstract protected void start();
 	
 	abstract protected void stop();
-	
-	protected abstract double calculateTime();
 }
