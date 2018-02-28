@@ -12,6 +12,7 @@ public class ArrivalEvent extends Event {
 	@Override
 	public void execute(SortedSequence seq, ShoppingState state) {
 		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
+			state.queue.add(state.factory.createCustomer());
 		
 		seq.sortEventQueue(this);
 		state.notifyObservers();
