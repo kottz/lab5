@@ -3,7 +3,6 @@ import sim.Event;
 import sim.SortedSequence;
 import supermarket.ShoppingState;
 import supermarket.customer.Customer;
-import.supermarket.customer.*;
 /**
  * Event som körs då en kund lämnar snabbköpet.
  *
