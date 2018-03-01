@@ -14,10 +14,10 @@ public class Main {
 	
 	private double minPickTime = 0.5;
 	private double maxPickTime = 1.0;
-	private double pickTime = (minPickTime+maxPickTime)/2;
+	private double pickTime; //UniformRandomStream bör användas.
 	private double minPayTime = 2.0;
 	private double maxPayTime = 3.0;
-	private double payTime = (minPayTime+maxPayTime)/2;
+	private double payTime;
 	
 	private long seed = 1234; //För randomobjektet
 	
