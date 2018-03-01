@@ -3,6 +3,9 @@ import sim.Event;
 import sim.SortedSequence;
 import supermarket.ShoppingState;
 import supermarket.customer.Customer;
+import random.*;
+import supermarket.FIFO;
+
 /**
  * Event som körs då en kund står i kassan och betalar.
  *
@@ -10,22 +13,17 @@ import supermarket.customer.Customer;
 public class PayEvent extends Event {
 	
 	private Customer c;
-	
-	public PayEvent(SortedSequence seq, ShoppingState state, Customer c) {
-		this.c = c;
-		time = state.calculateCheckoutTime();
-	}
+	private ShoppingState state;
+	private FIFO q = state.queue;
 	
 	public void execute(SortedSequence seq, ShoppingState state) {
-		state.removeCustomer(c);
-		state.completedCheckout();
 		
-		if(state.queue.isEmpty()) {
-			state.idleCheckouts += 1;
-		}else{
-			seq.sortEventQueue(new PayEvent(seq, state, state.queue.first()));
-			state.queue.removeFirst();
-		}
+	}
+	
+	public PayEvent(SortedSequence seq, ShoppingState state, Customer c, double time) {
+		this.c = c;
+		this.state = state;
+		this.time = time;
 	}
 
 }
