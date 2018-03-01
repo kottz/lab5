@@ -17,7 +17,7 @@ public class StopEvent extends Event {
 	@Override
 	public void execute(SortedSequence seq, ShoppingState state) {
 
-		state.isRunning=false;
+		state.stop();
 		state.updateTotalQueueTime(this.time);
 		state.notifyObservers();
 		state.hasChanged();

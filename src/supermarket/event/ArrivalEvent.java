@@ -1,6 +1,7 @@
 package supermarket.event;
 import sim.Event;
 import supermarket.ShoppingState;
+import supermarket.customer.Customer;
 import sim.SimulatorStateADT;
 import sim.SortedSequence;
 /**
@@ -24,8 +25,9 @@ public class ArrivalEvent extends Event {
 		state.updateTotalQueueTime(time);
 		
 		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
-			state.queue.add(state.factory.createCustomer());
-			seq.sortEventQueue(new PayEvent());
+			Customer c = state.factory.createCustomer();
+			state.queue.add(c);
+			seq.sortEventQueue(new PayEvent(seq, state,c, this.time));
 		
 
 		state.notifyObservers();
