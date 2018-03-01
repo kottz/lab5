@@ -11,9 +11,9 @@ public class LeaveEvent extends Event {
 
 private Customer c;
 	
-	public LeaveEvent(SortedSequence seq, ShoppingState state, Customer c) {
+	public LeaveEvent(SortedSequence seq, ShoppingState state, Customer c, double timeOfExecution) {
 		this.c = c;
-		time = state.calculateCheckoutTime();
+		time = timeOfExecution;
 	}
 	
 	public void execute(SortedSequence seq, ShoppingState state) {
@@ -23,7 +23,7 @@ private Customer c;
 		if(state.queue.isEmpty()) {
 			state.idleCheckouts += 1;
 		}else{
-			seq.sortEventQueue(new LeaveEvent(seq, state, state.queue.first()));
+			seq.sortEventQueue(new LeaveEvent(seq, state, state.queue.first(), time));
 			state.queue.removeFirst();
 		}
 	}

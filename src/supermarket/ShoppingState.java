@@ -20,12 +20,6 @@ public class ShoppingState extends SimulatorStateADT {
 	private int completedCheckouts = 0;
 	public int missedCustomers = 0;
 	public double timeOpen;
-	private double lamda;
-	private long seed;
-	private double Pmin;
-	private double Pmax;
-	private double Kmin;
-	private double Kmax;
 	
 	// Nya
 	private double totalQueueTime;
@@ -39,12 +33,6 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax, double timeOpen) {
 		this.maxCustomers = maxCustomers;
-		this.lamda = lamda;
-		this.seed = seed;
-		this.Pmin = Pmin;
-		this.Pmax = Pmax;
-		this.Kmin = Kmin;
-		this.Kmax = Kmax;
 		this.timeOpen = timeOpen;
 		
 		customersShopping = new ArrayList<Customer>();
