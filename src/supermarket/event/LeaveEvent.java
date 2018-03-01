@@ -23,7 +23,7 @@ private Customer c;
 		if(state.queue.isEmpty()) {
 			state.idleCheckouts += 1;
 		}else{
-			seq.sortEventQueue(new LeaveEvent(seq, state, state.queue.first(), time));
+			seq.sortEventQueue(new LeaveEvent(seq, state, state.queue.first(), time + state.calculateCheckoutTime()));
 			state.queue.removeFirst();
 		}
 	}

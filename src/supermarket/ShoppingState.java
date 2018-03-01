@@ -103,7 +103,7 @@ public class ShoppingState extends SimulatorStateADT {
 		customersShopping.add(c);
 	}
 	public boolean freeCheckout() {
-		return idleCheckout > 0;
+		return idleCheckouts > 0;
 	}
 	/**
 	 * Returnerar om tillståndet är startat eller ej
