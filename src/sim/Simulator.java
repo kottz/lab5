@@ -1,6 +1,4 @@
 package sim;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 import supermarket.ShoppingState;
 
 /**
