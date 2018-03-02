@@ -25,7 +25,6 @@ public class StartEvent extends Event {
 	}
 	@Override
 	public void execute() {
-		System.out.println(time);
 		state.setCurrentTime(time);
 		state.start();
 		state.openStore();
