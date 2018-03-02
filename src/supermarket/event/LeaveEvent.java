@@ -1,7 +1,6 @@
 package supermarket.event;
 import sim.Event;
 import sim.SortedSequence;
-import supermarket.FIFO;
 import supermarket.ShoppingState;
 import supermarket.customer.Customer;
 /**
@@ -11,10 +10,7 @@ import supermarket.customer.Customer;
 public class LeaveEvent extends Event {
 
 	private Customer c;
-<<<<<<< HEAD
-=======
 	private double time;
->>>>>>> dd07df44a7f06a9bd8bd49e5bec7bf63368d1fd6
 	
 	public LeaveEvent(SortedSequence seq, ShoppingState state, Customer c, double timeOfExecution) {
 		this.c = c;
