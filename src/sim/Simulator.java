@@ -20,10 +20,9 @@ public class Simulator {
 	
 	public void run() {
 		state.start();
-		
 		while(!eq.getArray().isEmpty() && state.isRunning) {	
-			System.out.println(eq.getArray().get(0).getTime()); //debug print
-			System.out.println(eq.getArray().toString());
+			//System.out.println(eq.getArray().get(0).getTime()); //debug print
+			//System.out.println(eq.getArray().toString());
 			eq.nextEvent().execute();
 		}
 	}

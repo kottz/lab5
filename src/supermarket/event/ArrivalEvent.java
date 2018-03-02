@@ -25,6 +25,7 @@ public class ArrivalEvent extends Event {
 	@Override
 	public void execute() {
 		state.setCurrentTime(time);
+		state.update();
 		
 		if(state.isOpen()) {
 		double nextArrivalTime = time + state.calculateArrivalTime();

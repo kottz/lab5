@@ -1,6 +1,7 @@
 package sim;
 import supermarket.event.*;
 import supermarket.ShoppingState;
+import supermarket.ShoppingView;
 
 /**
  * Mainmetod för att köra simulering
@@ -29,8 +30,8 @@ public class Main {
 		
 		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
 				minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
-		//ShoppingView view = new ShoppingView();
-		//state.addObserver(view);
+		ShoppingView view = new ShoppingView(state);
+		state.addObserver(view);
 		EventQueue eq = new EventQueue();
 		
 		Simulator sim1 = new Simulator(eq,state);
