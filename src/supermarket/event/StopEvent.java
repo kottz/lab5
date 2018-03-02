@@ -9,9 +9,10 @@ import sim.SortedSequence;
  */
 public class StopEvent extends Event {
 	
-	public StopEvent() {
-		
-		//this.time = ?;
+	private double time;
+	
+	public StopEvent(double time) {
+		this.time = time;
 	}
 
 	@Override

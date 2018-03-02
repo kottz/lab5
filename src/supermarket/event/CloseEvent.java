@@ -7,10 +7,12 @@ import supermarket.ShoppingState;
  *
  */
 public class CloseEvent extends Event {
-
-	public CloseEvent() {
 	
-		//time = 0.0d;
+	private double time;
+	
+	public CloseEvent(double time) {
+	
+		this.time = time;
 		
 	}
 	@Override

@@ -14,6 +14,7 @@ public class PayEvent extends Event {
 	
 	private Customer c;
 	private ShoppingState state;
+	private double time;
 	private FIFO q = state.queue;
 	
 	public PayEvent(SortedSequence seq, ShoppingState state, Customer c, double time) {
@@ -23,11 +24,13 @@ public class PayEvent extends Event {
 	}
 	
 	public void execute(SortedSequence seq, ShoppingState state) {
+		
+		
 	
 		if(state.freeCheckout()) {
 			state.idleCheckouts--;
-			double newTime = time + state.calculateCheckoutTime();
-			Event leave = new LeaveEvent(seq,state,c,newTime); //Skickar vidare denna kund till leave, newTime = tiden då betalningen är klar.
+			double nextLeaveTime = time + state.calculateCheckoutTime();
+			Event leave = new LeaveEvent(seq,state,c,nextLeaveTime); //Skickar vidare denna kund till leave, newTime = tiden då betalningen är klar.
 			seq.sortEventQueue(leave); //Lägger till kund och sorterar
 		} else {
 			q.add(c);
