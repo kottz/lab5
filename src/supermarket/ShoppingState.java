@@ -177,10 +177,17 @@ public class ShoppingState extends SimulatorStateADT {
 	public void setCurrentTime(double time) {
 		currentTime = time;
 	}
+	
+	public void openStore() {
+		open = true;
+	}
+	public void closeStore() {
+		open = false;
+	}
 
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
