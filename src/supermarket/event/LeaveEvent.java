@@ -18,6 +18,7 @@ public class LeaveEvent extends Event {
 		this.seq = seq;
 		this.state = state;
 		this.c = c;
+		
 		time = timeOfExecution;
 	}
 	
@@ -31,6 +32,8 @@ public class LeaveEvent extends Event {
 			seq.sortEventQueue(new LeaveEvent(seq, state, state.queue.first(), time + state.calculateCheckoutTime()));
 			state.queue.removeFirst();
 		}
+		
+		state.update();
 	}
 	
 }
