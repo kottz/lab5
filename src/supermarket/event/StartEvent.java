@@ -10,17 +10,18 @@ import supermarket.customer.CustomerSpawner;
  */
 public class StartEvent extends Event {
 	
+	private double time;
+	
 	public StartEvent() {
-		
 		this.time=0.00d;
-		
 	}
 
 	@Override
 	public void execute(SortedSequence seq, ShoppingState state) {
 	
 		state.queue.add(state.factory.createCustomer());	
-		seq.sortEventQueue(new ArrivalEvent(seq,state));
+		double nextArrivalTime = time + state.calculateArrivalTime();
+		seq.sortEventQueue(new ArrivalEvent(seq,state,nextArrivalTime));
 		state.notifyObservers();
 		state.hasChanged();
 		

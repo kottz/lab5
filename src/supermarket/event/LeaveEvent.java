@@ -9,7 +9,8 @@ import supermarket.customer.Customer;
  */
 public class LeaveEvent extends Event {
 
-private Customer c;
+	private Customer c;
+	private double time;
 	
 	public LeaveEvent(SortedSequence seq, ShoppingState state, Customer c, double timeOfExecution) {
 		this.c = c;

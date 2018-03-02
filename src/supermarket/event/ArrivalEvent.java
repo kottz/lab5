@@ -10,24 +10,23 @@ import sim.SortedSequence;
  */
 public class ArrivalEvent extends Event {
 	
+	private double time;
 	
-	
-	public ArrivalEvent(SortedSequence seq,  ShoppingState state) {
-		
-		time = state.calculateArrivalTime();
-		
-		
+	public ArrivalEvent(SortedSequence seq,  ShoppingState state, double time) {
+		this.time = time;
 	}
 
 	@Override
 	public void execute(SortedSequence seq, ShoppingState state) {
-		seq.sortEventQueue(new ArrivalEvent(seq,state));
+		double nextArrivalTime = time + state.calculateArrivalTime();
+		seq.sortEventQueue(new ArrivalEvent(seq,state,nextArrivalTime));
 		state.updateTotalQueueTime(time);
 		
 		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
 			Customer c = state.factory.createCustomer();
 			state.queue.add(c);
-			seq.sortEventQueue(new PayEvent(seq, state,c, this.time));
+			double nextPayTime = time + state.calculateShoppingTime();
+			seq.sortEventQueue(new PayEvent(seq, state,c, nextPayTime));
 		
 
 		state.notifyObservers();
