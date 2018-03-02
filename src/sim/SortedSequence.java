@@ -1,5 +1,5 @@
 package sim;
-
+import supermarket.event.*;
 /**
  * 
  * Klassen tar en EventQueue som dess parameter och sedan sorterar den efter
@@ -33,7 +33,7 @@ public class SortedSequence {
 			for (int i = 0; i < this.eq.getArray().size(); i++) {
 
 				// Jämför tiden hos inparametern med tiden hos listans index i.
-				if ((e.time) < this.eq.getArray().get(i).time) {
+				if ((e.getTime()) < this.eq.getArray().get(i).getTime()) {
 					this.eq.getArray().add(i, e);
 					break;
 

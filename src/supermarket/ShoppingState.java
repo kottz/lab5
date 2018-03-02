@@ -43,6 +43,7 @@ public class ShoppingState extends SimulatorStateADT {
 		ERS = new ExponentialRandomStream(lamda, seed);
 		URSPay = new UniformRandomStream(Kmin, Kmax, seed);
 		URSFetch = new UniformRandomStream(Pmin, Pmax, seed);
+		this.factory = new CustomerSpawner();
 		
 		queue = new FIFO();
 	}

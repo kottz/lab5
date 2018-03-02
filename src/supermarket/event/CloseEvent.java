@@ -18,11 +18,13 @@ public class CloseEvent extends Event {
 		this.time = time;
 		
 	}
+	public double getTime() {
+		return time;
+	}
 	@Override
 	public void execute() {
 		state.setCurrentTime(time);
 		state.closeStore();
-		
 	}
 
 }

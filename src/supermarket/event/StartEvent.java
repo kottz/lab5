@@ -20,9 +20,14 @@ public class StartEvent extends Event {
 		this.time=0.00d;
 	}
 
+	public double getTime() {
+		return time;
+	}
 	@Override
 	public void execute() {
+		System.out.println(time);
 		state.setCurrentTime(time);
+		state.start();
 		state.openStore();
 		
 		state.queue.add(state.factory.createCustomer());	

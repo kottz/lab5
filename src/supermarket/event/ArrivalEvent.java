@@ -19,14 +19,19 @@ public class ArrivalEvent extends Event {
 		this.seq = seq;
 		this.state = state;
 	}
+	public double getTime() {
+		return time;
+	}
 
 	@Override
 	public void execute() {
 		state.setCurrentTime(time);
 		
+		if(state.isOpen()) {
 		double nextArrivalTime = time + state.calculateArrivalTime();
 		seq.sortEventQueue(new ArrivalEvent(seq,state,nextArrivalTime));
 		state.updateTotalQueueTime(time);
+		}
 		
 		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
 			Customer c = state.factory.createCustomer();

@@ -25,6 +25,9 @@ public class PayEvent extends Event {
 		this.c = c;
 		this.q = state.queue;
 	}
+	public double getTime() {
+		return time;
+	}
 	
 	public void execute() {
 		state.setCurrentTime(time);

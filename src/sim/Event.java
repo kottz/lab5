@@ -14,4 +14,6 @@ public abstract class Event {
 
 	// Utför något med hjälp av sekvensen och ett state.
 	public abstract void execute();
+	
+	public abstract double getTime();
 }

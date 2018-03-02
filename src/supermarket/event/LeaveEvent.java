@@ -21,6 +21,9 @@ public class LeaveEvent extends Event {
 		
 		time = timeOfExecution;
 	}
+	public double getTime() {
+		return time;
+	}
 	
 	public void execute() {
 		state.setCurrentTime(time);

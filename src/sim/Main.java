@@ -16,7 +16,7 @@ public class Main {
 		
 		int numOfCashiers = 2;
 		int maximumCapacity = 5;
-		double hoursOpen = 100;
+		double hoursOpen = 10;
 		double stopTime = 999;
 		
 		double minPickTime = 0.5;
@@ -33,7 +33,7 @@ public class Main {
 		//state.addObserver(view);
 		EventQueue eq = new EventQueue();
 		
-		Simulator sim1 = new Simulator(eq);
+		Simulator sim1 = new Simulator(eq,state);
 		SortedSequence seq = sim1.seq;
 		
 		Event start = new StartEvent(seq,state);

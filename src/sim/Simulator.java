@@ -1,5 +1,7 @@
 package sim;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 
+import supermarket.ShoppingState;
 
 /**
  * Simulator som kör event i en EventQueue
@@ -11,14 +13,21 @@ public class Simulator {
 	EventQueue eq;
 	SortedSequence seq;
 	
-	public Simulator(EventQueue eq) {
+	SimulatorStateADT state;
+	
+	public Simulator(EventQueue eq, SimulatorStateADT state) {
 		this.eq = eq;
+		this.state = state;
 		this.seq = new SortedSequence(eq);
 	}
 	
 	
 	public void run() {
-		while(!eq.getArray().isEmpty()) { //Tog bort && isRunning. Simulatorn ska inte vara dependant på ShoppingState.
+		state.start();
+		
+		while(!eq.getArray().isEmpty() && state.isRunning) {	
+			System.out.println(eq.getArray().get(0).getTime()); //debug print
+			//System.out.println(eq.getArray().toString());
 			eq.nextEvent().execute();
 		}
 	}
