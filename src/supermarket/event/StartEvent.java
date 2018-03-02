@@ -29,7 +29,8 @@ public class StartEvent extends Event {
 		state.start();
 		state.openStore();
 		
-		state.queue.add(state.factory.createCustomer());	
+		//state.queue.add(state.factory.createCustomer());
+		
 		double nextArrivalTime = time + state.calculateArrivalTime();
 		seq.sortEventQueue(new ArrivalEvent(seq,state,nextArrivalTime));
 		state.notifyObservers();

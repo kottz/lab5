@@ -1,5 +1,4 @@
 package sim;
-import supermarket.ShoppingState;
 
 /**
  * Simulator som kör event i en EventQueue
@@ -10,7 +9,6 @@ public class Simulator {
 
 	EventQueue eq;
 	SortedSequence seq;
-	
 	SimulatorStateADT state;
 	
 	public Simulator(EventQueue eq, SimulatorStateADT state) {
@@ -25,7 +23,7 @@ public class Simulator {
 		
 		while(!eq.getArray().isEmpty() && state.isRunning) {	
 			System.out.println(eq.getArray().get(0).getTime()); //debug print
-			//System.out.println(eq.getArray().toString());
+			System.out.println(eq.getArray().toString());
 			eq.nextEvent().execute();
 		}
 	}

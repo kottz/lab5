@@ -61,8 +61,10 @@ public class FIFO {
 		for(Customer i: fifo) {
 			queueString = queueString + i.getId() + ", ";
 		}
-		queueString = queueString.substring(0, queueString.length()-2) +"]";
-		return queueString;
+		if(queueString.length() > 2) {
+			queueString = queueString.substring(0, queueString.length()-2);
+		}
+		return queueString + "]";
 	}
 	
 	/**
