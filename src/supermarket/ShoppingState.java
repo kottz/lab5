@@ -161,6 +161,13 @@ public class ShoppingState extends SimulatorStateADT {
 		return (totalQueueTime+=updateTime);
 		
 	}
+	/**
+	 * Kallar på setChanged och notifyObservers.
+	 */
+	public void update() {
+		setChanged();
+		notifyObservers();
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
