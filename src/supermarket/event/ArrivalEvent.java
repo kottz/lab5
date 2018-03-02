@@ -24,8 +24,10 @@ public class ArrivalEvent extends Event {
 
 	@Override
 	public void execute() {
+		//Sätter aktuella värden och uppdaterar.
 		state.setCurrentTime(time);
 		state.update();
+		
 		
 		if(state.isOpen()) {
 		double nextArrivalTime = time + state.calculateArrivalTime();
@@ -40,8 +42,8 @@ public class ArrivalEvent extends Event {
 			seq.sortEventQueue(new PayEvent(seq, state,c, nextPayTime));
 		
 
-		state.notifyObservers();
-		state.hasChanged();
+		//state.notifyObservers();
+		//state.hasChanged();
 		}
 		else {
 			

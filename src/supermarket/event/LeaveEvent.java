@@ -26,7 +26,9 @@ public class LeaveEvent extends Event {
 	}
 	
 	public void execute() {
+		//Sätter aktuella värden och uppdaterar.
 		state.setCurrentTime(time);
+		state.update();
 		
 		state.removeCustomer(c);
 		state.completedCheckout();
@@ -37,8 +39,6 @@ public class LeaveEvent extends Event {
 			seq.sortEventQueue(new LeaveEvent(seq, state, state.queue.first(), time + state.calculateCheckoutTime()));
 			state.queue.removeFirst();
 		}
-		
-		state.update();
 	}
 	
 }

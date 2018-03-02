@@ -24,7 +24,9 @@ public class StopEvent extends Event {
 	}
 	@Override
 	public void execute() {
+		//Sätter aktuella värden och uppdaterar.
 		state.setCurrentTime(time);
+		state.update();
 
 		state.stop();
 		state.updateTotalQueueTime(this.time);

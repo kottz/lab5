@@ -23,7 +23,11 @@ public class CloseEvent extends Event {
 	}
 	@Override
 	public void execute() {
+		//Sätter aktuella värden och uppdaterar.
 		state.setCurrentTime(time);
+		state.update();
+
+		
 		state.closeStore();
 	}
 

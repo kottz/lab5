@@ -25,7 +25,10 @@ public class StartEvent extends Event {
 	}
 	@Override
 	public void execute() {
+		//Sätter aktuella värden och uppdaterar.
 		state.setCurrentTime(time);
+		state.update();
+		
 		state.start();
 		state.openStore();
 		
