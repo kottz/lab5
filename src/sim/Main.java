@@ -1,5 +1,6 @@
 package sim;
 import supermarket.event.*;
+import supermarket.ShoppingState;
 
 /**
  * Mainmetod för att köra simulering
@@ -7,38 +8,40 @@ import supermarket.event.*;
  */
 public class Main {
 
-	private int numOfCashiers = 2;
-	private int maximumCapacity = 5;
-	private double lambda = 1.0; //ankomsthastighet
-	private double openingHours; //Öppettider (tid S ur labspecen)
-	
-	private double minPickTime = 0.5;
-	private double maxPickTime = 1.0;
-	private double pickTime; //UniformRandomStream bör användas.
-	private double minPayTime = 2.0;
-	private double maxPayTime = 3.0;
-	private double payTime;
-	
-	private long seed = 1234; //För randomobjektet
-	
-	
-	EventQueue eq = new EventQueue();
-	ettsupermarketState state = new ettsupermarketState(); //Denna konstruktor måste ta några parametrar
-	emsupermarketView view = new ensupermarketView();
-	state.addObserver(view);
-	
-	//Lägger till ett startEvent för att dra igång simuleringen.
-	Event start = new StartEvent(); //TO-DO, konstruktorerna kommer ta några argument.
-	Event close = new CloseEvent();
-	Event stop = new StopEvent();
-	eq.addEvent(start);
-	eq.addEvent(close);
-	eq.addEvent(stop);
-	
-	Simulator simulator = new Simulator(eq, state);
-	
+	/**
+	 * Mainmetod som kör simulationen
+	 *
+	 */	
 	public static void main(String[] args) {
-		Simulator sim1 = new Simulator(eq, state);
+		
+		int numOfCashiers = 2;
+		int maximumCapacity = 5;
+		double hoursOpen = 100;
+		double stopTime = 999;
+		
+		double minPickTime = 0.5;
+		double maxPickTime = 1.0;
+		double minPayTime = 2.0;
+		double maxPayTime = 3.0;
+		
+		double lambda = 1.0;
+		long seed = 1234;
+		
+		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers, minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
+		//ShoppingView view = new ShoppingView();
+		//state.addObserver(view);
+		EventQueue eq = new EventQueue();
+		
+		Simulator sim1 = new Simulator(eq);
+		SortedSequence seq = sim1.seq;
+		
+		Event start = new StartEvent(seq,state);
+		Event close = new CloseEvent(seq,state,hoursOpen);
+		Event stop = new StopEvent(seq,state,stopTime);
+		eq.addEvent(start);
+		eq.addEvent(close);
+		eq.addEvent(stop);
+		
 		sim1.run();
 	}
 }

@@ -1,6 +1,5 @@
 package sim;
 
-import supermarket.ShoppingState;
 
 /**
  * Simulator som kör event i en EventQueue
@@ -8,20 +7,19 @@ import supermarket.ShoppingState;
  */
 public class Simulator {
 
+
 	EventQueue eq;
-	ShoppingState state;
 	SortedSequence seq;
 	
-	public Simulator(EventQueue eq, ShoppingState state) {
+	public Simulator(EventQueue eq) {
 		this.eq = eq;
-		this.state = state;
 		this.seq = new SortedSequence(eq);
 	}
 	
+	
 	public void run() {
-		
-		while(!eq.getArray().isEmpty() && !state.isRunning) {
-			eq.nextEvent().execute(seq, state);
+		while(!eq.getArray().isEmpty()) { //Tog bort && isRunning. Simulatorn ska inte vara dependant på ShoppingState.
+			eq.nextEvent().execute();
 		}
 	}
 	
