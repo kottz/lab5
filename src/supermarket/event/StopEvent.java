@@ -10,13 +10,17 @@ import sim.SortedSequence;
 public class StopEvent extends Event {
 	
 	private double time;
+	private SortedSequence seq;
+	private ShoppingState state;
 	
-	public StopEvent(double time) {
+	public StopEvent(SortedSequence seq, ShoppingState state, double time) {
+		this.seq = seq;
+		this.state = state;
 		this.time = time;
 	}
 
 	@Override
-	public void execute(SortedSequence seq, ShoppingState state) {
+	public void execute() {
 
 		state.stop();
 		state.updateTotalQueueTime(this.time);

@@ -13,5 +13,5 @@ public abstract class Event {
 	public double time;
 
 	// Utför något med hjälp av sekvensen och ett state.
-	public abstract void execute(SortedSequence seq, ShoppingState state);
+	public abstract void execute();
 }

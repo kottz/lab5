@@ -11,13 +11,17 @@ import supermarket.customer.CustomerSpawner;
 public class StartEvent extends Event {
 	
 	private double time;
+	private SortedSequence seq;
+	private ShoppingState state;
 	
-	public StartEvent() {
+	public StartEvent(SortedSequence seq, ShoppingState state) {
+		this.seq = seq;
+		this.state = state;
 		this.time=0.00d;
 	}
 
 	@Override
-	public void execute(SortedSequence seq, ShoppingState state) {
+	public void execute() {
 	
 		state.queue.add(state.factory.createCustomer());	
 		double nextArrivalTime = time + state.calculateArrivalTime();

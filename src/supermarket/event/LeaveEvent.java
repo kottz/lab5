@@ -9,15 +9,19 @@ import supermarket.customer.Customer;
  */
 public class LeaveEvent extends Event {
 
-	private Customer c;
+	private SortedSequence seq;
+	private ShoppingState state;
 	private double time;
+	private Customer c;
 	
 	public LeaveEvent(SortedSequence seq, ShoppingState state, Customer c, double timeOfExecution) {
+		this.seq = seq;
+		this.state = state;
 		this.c = c;
 		time = timeOfExecution;
 	}
 	
-	public void execute(SortedSequence seq, ShoppingState state) {
+	public void execute() {
 		state.removeCustomer(c);
 		state.completedCheckout();
 		

@@ -9,14 +9,17 @@ import supermarket.ShoppingState;
 public class CloseEvent extends Event {
 	
 	private double time;
+	private SortedSequence seq;
+	private ShoppingState state;
 	
-	public CloseEvent(double time) {
-	
+	public CloseEvent(SortedSequence seq, ShoppingState state, double time) {
+		this.seq = seq;
+		this.state = state;
 		this.time = time;
 		
 	}
 	@Override
-	public void execute(SortedSequence seq, ShoppingState state) {
+	public void execute() {
 		
 		//state.close();
 		

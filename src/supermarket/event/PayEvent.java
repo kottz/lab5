@@ -12,18 +12,21 @@ import supermarket.FIFO;
  */
 public class PayEvent extends Event {
 	
-	private Customer c;
-	private ShoppingState state;
 	private double time;
-	private FIFO q = state.queue;
+	private SortedSequence seq;
+	private ShoppingState state;
+	private Customer c;
+	private FIFO q;
 	
 	public PayEvent(SortedSequence seq, ShoppingState state, Customer c, double time) {
-		this.c = c;
+		this.seq = seq;
 		this.state = state;
 		this.time = time;
+		this.c = c;
+		this.q = state.queue;
 	}
 	
-	public void execute(SortedSequence seq, ShoppingState state) {
+	public void execute() {
 		
 		
 	

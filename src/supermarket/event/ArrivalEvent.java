@@ -11,13 +11,17 @@ import sim.SortedSequence;
 public class ArrivalEvent extends Event {
 	
 	private double time;
+	private SortedSequence seq;
+	private ShoppingState state;
 	
 	public ArrivalEvent(SortedSequence seq,  ShoppingState state, double time) {
 		this.time = time;
+		this.seq = seq;
+		this.state = state;
 	}
 
 	@Override
-	public void execute(SortedSequence seq, ShoppingState state) {
+	public void execute() {
 		double nextArrivalTime = time + state.calculateArrivalTime();
 		seq.sortEventQueue(new ArrivalEvent(seq,state,nextArrivalTime));
 		state.updateTotalQueueTime(time);
