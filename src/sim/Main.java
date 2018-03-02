@@ -27,7 +27,8 @@ public class Main {
 		double lambda = 1.0;
 		long seed = 1234;
 		
-		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers, minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
+		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
+				minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
 		//ShoppingView view = new ShoppingView();
 		//state.addObserver(view);
 		EventQueue eq = new EventQueue();
