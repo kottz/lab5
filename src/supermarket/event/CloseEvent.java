@@ -20,6 +20,7 @@ public class CloseEvent extends Event {
 	}
 	@Override
 	public void execute() {
+		state.setCurrentTime(time);
 		
 		//state.close();
 		

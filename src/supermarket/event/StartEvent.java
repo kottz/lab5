@@ -22,6 +22,7 @@ public class StartEvent extends Event {
 
 	@Override
 	public void execute() {
+		state.setCurrentTime(time);
 	
 		state.queue.add(state.factory.createCustomer());	
 		double nextArrivalTime = time + state.calculateArrivalTime();

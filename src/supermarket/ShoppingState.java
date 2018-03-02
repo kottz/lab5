@@ -20,6 +20,7 @@ public class ShoppingState extends SimulatorStateADT {
 	private int completedCheckouts = 0;
 	public int missedCustomers = 0;
 	public double timeOpen;
+	private double currentTime; //Tid för aktuella eventet.
 	
 	// Nya
 	private double totalQueueTime;
@@ -167,6 +168,14 @@ public class ShoppingState extends SimulatorStateADT {
 	public void update() {
 		setChanged();
 		notifyObservers();
+	}
+	
+	public double getCurrentTime() { //Kallas från vyn, ger tiden för det aktuella eventet
+		return currentTime;
+	}
+	
+	public void setCurrentTime(double time) {
+		currentTime = time;
 	}
 
 	public static void main(String[] args) {

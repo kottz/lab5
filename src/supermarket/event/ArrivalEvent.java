@@ -22,6 +22,8 @@ public class ArrivalEvent extends Event {
 
 	@Override
 	public void execute() {
+		state.setCurrentTime(time);
+		
 		double nextArrivalTime = time + state.calculateArrivalTime();
 		seq.sortEventQueue(new ArrivalEvent(seq,state,nextArrivalTime));
 		state.updateTotalQueueTime(time);

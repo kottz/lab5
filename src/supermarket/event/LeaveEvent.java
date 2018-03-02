@@ -23,6 +23,8 @@ public class LeaveEvent extends Event {
 	}
 	
 	public void execute() {
+		state.setCurrentTime(time);
+		
 		state.removeCustomer(c);
 		state.completedCheckout();
 		

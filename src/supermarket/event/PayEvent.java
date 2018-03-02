@@ -27,8 +27,7 @@ public class PayEvent extends Event {
 	}
 	
 	public void execute() {
-		
-		
+		state.setCurrentTime(time);
 	
 		if(state.freeCheckout()) {
 			state.idleCheckouts--;
