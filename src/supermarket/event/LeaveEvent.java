@@ -24,10 +24,14 @@ public class LeaveEvent extends Event {
 	public double getTime() {
 		return time;
 	}
-	
+	public String toString() {
+		return "Betal";
+	}
+
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
-		state.setCurrentTime(time);
+		state.setCurrentEvent(this);
+		state.setCurrentCustomer(c);
 		state.update();
 		
 		state.removeCustomer(c);

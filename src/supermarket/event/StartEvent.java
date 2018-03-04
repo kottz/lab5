@@ -23,10 +23,13 @@ public class StartEvent extends Event {
 	public double getTime() {
 		return time;
 	}
+	public String toString() {
+		return "Start";
+	}
 	@Override
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
-		state.setCurrentTime(time);
+		state.setCurrentEvent(this);
 		state.update();
 		
 		state.start();

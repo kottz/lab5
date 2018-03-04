@@ -28,10 +28,13 @@ public class PayEvent extends Event {
 	public double getTime() {
 		return time;
 	}
-	
+	public String toString() {
+		return "Plock";
+	}
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
-		state.setCurrentTime(time);
+		state.setCurrentEvent(this);
+		state.setCurrentCustomer(c);
 		state.update();
 	
 		if(state.freeCheckout()) {

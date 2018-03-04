@@ -1,6 +1,5 @@
 package sim;
 
-import supermarket.ShoppingState;
 
 /**
  * 
@@ -16,4 +15,5 @@ public abstract class Event {
 	public abstract void execute();
 	
 	public abstract double getTime();
+	
 }

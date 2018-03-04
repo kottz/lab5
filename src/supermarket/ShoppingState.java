@@ -1,6 +1,7 @@
 package supermarket;
 
 import java.util.ArrayList;
+import sim.Event;
 
 import random.*;
 import sim.SimulatorStateADT;
@@ -13,6 +14,7 @@ public class ShoppingState extends SimulatorStateADT {
 	private UniformRandomStream URSPay;
 	private UniformRandomStream URSFetch;
 	
+	private double lambda;
 	public int numberOfCheckouts;
 	public int idleCheckouts;
 	public int timeCheckoutsHaveBeenIdle = 0;
@@ -21,6 +23,13 @@ public class ShoppingState extends SimulatorStateADT {
 	public int missedCustomers = 0;
 	public double timeOpen;
 	private double currentTime; //Tid för aktuella eventet.
+	private double Pmin;
+	private double Pmax;
+	private double Kmin;
+	private double Kmax;
+	private double seed;
+	private Event currentEvent;
+	private Customer currentCustomer;
 	
 	// Nya
 	private double totalQueueTime;
@@ -32,15 +41,21 @@ public class ShoppingState extends SimulatorStateADT {
 	public ArrayList<Customer> customersShopping;
 	public CustomerSpawner factory;
 	
-	public ShoppingState(double lamda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax, double timeOpen) {
+	public ShoppingState(double lambda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax, double timeOpen) {
 		this.maxCustomers = maxCustomers;
 		this.timeOpen = timeOpen;
+		this.lambda = lambda;
+		this.Pmin = Pmin;
+		this.Pmax = Pmax;
+		this.Kmin = Kmin;
+		this.Kmax = Kmax;
+		this.seed = seed;
 		
 		customersShopping = new ArrayList<Customer>();
 		this.numberOfCheckouts = numberOfCheckouts;
 		this.idleCheckouts = this.numberOfCheckouts;
 		
-		ERS = new ExponentialRandomStream(lamda, seed);
+		ERS = new ExponentialRandomStream(lambda, seed);
 		URSPay = new UniformRandomStream(Kmin, Kmax, seed);
 		URSFetch = new UniformRandomStream(Pmin, Pmax, seed);
 		this.factory = new CustomerSpawner();
@@ -172,7 +187,7 @@ public class ShoppingState extends SimulatorStateADT {
 	}
 	
 	public double getCurrentTime() { //Kallas från vyn, ger tiden för det aktuella eventet
-		return currentTime;
+		return currentEvent.getTime();
 	}
 	
 	public void setCurrentTime(double time) {
@@ -182,13 +197,45 @@ public class ShoppingState extends SimulatorStateADT {
 	public void openStore() {
 		open = true;
 	}
+	
 	public void closeStore() {
 		open = false;
 	}
-
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public double getLambda() {
+		return lambda;
+	}
+	
+	public double getPmin() {
+		return Pmin;
+	}
+	
+	public double getPmax() {
+		return Pmax;
+	}
+	
+	public double getKmin() {
+		return Kmin;
+	}
+	
+	public double getKmax() {
+		return Kmax;
+	}
+	
+	public double getSeed() {
+		return seed;
+	}
+	public void setCurrentEvent(Event e) {
+		currentEvent = e;
+	}
+	public Event getCurrentEvent() {
+		return currentEvent;
+	}
+	public Customer getCurrentCustomer() {
+		return currentCustomer;
+	}
+	public void setCurrentCustomer(Customer c) {
+		currentCustomer = c;
 	}
 
 }

@@ -22,18 +22,19 @@ public class StopEvent extends Event {
 	public double getTime() {
 		return time;
 	}
+	public String toString() {
+		return "Stop";
+	}
 	@Override
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
-		state.setCurrentTime(time);
-		state.update();
+		state.setCurrentEvent(this);
+		
 
 		state.stop();
 		state.updateTotalQueueTime(this.time);
-		state.notifyObservers();
-		state.hasChanged();
 		
-		
+		state.update();
 		
 	}
 

@@ -21,10 +21,13 @@ public class CloseEvent extends Event {
 	public double getTime() {
 		return time;
 	}
+	public String toString() {
+		return "Stänger";
+	}
 	@Override
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
-		state.setCurrentTime(time);
+		state.setCurrentEvent(this);
 		state.update();
 
 		

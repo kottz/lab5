@@ -12,6 +12,7 @@ public class ArrivalEvent extends Event {
 	private double time;
 	private SortedSequence seq;
 	private ShoppingState state;
+	private Customer c;
 	
 	public ArrivalEvent(SortedSequence seq,  ShoppingState state, double time) {
 		this.time = time;
@@ -21,11 +22,18 @@ public class ArrivalEvent extends Event {
 	public double getTime() {
 		return time;
 	}
-
+	public String toString() {
+		return "Ankomst";
+	}
 	@Override
 	public void execute() {
+		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
+			c = state.factory.createCustomer();
+			state.setCurrentCustomer(c);
+		}
 		//Sätter aktuella värden och uppdaterar.
-		state.setCurrentTime(time);
+		state.setCurrentEvent(this);
+		
 		state.update();
 		
 		
@@ -36,7 +44,7 @@ public class ArrivalEvent extends Event {
 		}
 		
 		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
-			Customer c = state.factory.createCustomer();
+			//c = state.factory.createCustomer();
 			//state.queue.add(c);
 			double nextPayTime = time + state.calculateShoppingTime();
 			seq.sortEventQueue(new PayEvent(seq, state,c, nextPayTime));
