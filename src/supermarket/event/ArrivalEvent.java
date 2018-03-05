@@ -27,11 +27,11 @@ public class ArrivalEvent extends Event {
 	}
 	@Override
 	public void execute() {
-		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
-			c = state.factory.createCustomer();
-			state.setCurrentCustomer(c);
-		}
+		//Skapar en ny kund
+		c = state.factory.createCustomer();
+		
 		//Sätter aktuella värden och uppdaterar.
+		state.setCurrentCustomer(c);
 		state.setCurrentEvent(this);
 		
 		state.update();

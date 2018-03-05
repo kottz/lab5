@@ -16,15 +16,22 @@ public class ShoppingView extends SimView{
 	public void update(Observable o, Object arg) {
 		//Printas i början
 		if(startFlag) {
-			System.out.println("Parametrar\n========");
-			System.out.println("Antal Kassor, N:\t" + state.getNumberOfCustomers());
-			System.out.println("Max som ryms, M:\t" + state.getMaxCustomers());
-			System.out.println("Ankomsthastighet, lamba:\t" + state.getLambda());
-			System.out.println("Plocktider, [P_min..Pmax]:\t" + "[" + state.getPmin() + ".." + state.getPmax() + "]");
-			System.out.println("Betaltider, [K_min..Kmax]:\t" + "[" + state.getKmin() + ".." + state.getKmax() + "]");
-			System.out.println("Frö, f:\t" + state.getSeed());
-			System.out.println("\nFÖRLOPP\n=====");
-			System.out.println("Tid\tHändelse\tKund\t?  led\tledT\tI\t$\t:-(   köat    köT   köar  [Kassakö..]");
+			System.out.printf("Parametrar\n========\n"
+					+ "Antal Kassor, N:\t%s\n"
+					+ "Max som ryms, M:\t%s\n"
+					+ "Ankomsthastighet, lamba:\t%s\n"
+					+ "Plocktider, [P_min..Pmax]:\t[%s..%s]\n"
+					+ "Betaltider, [K_min..Kmax]:\\t[%s..%s]\n"
+					+ "Frö, f:\t%s\n"
+					+ "\nFÖRLOPP\n=====\n"
+					+ "Tid\tHändelse\tKund\t?\tled\tledT\tI\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]\n",
+					state.getNumberOfCustomers(),
+					state.getMaxCustomers(),
+					state.getLambda(),
+					state.getPmin(),state.getPmax(),
+					state.getKmin(),state.getKmax(),
+					state.getSeed());
+			
 			startFlag = false;
 		}
 		
@@ -34,15 +41,44 @@ public class ShoppingView extends SimView{
 			
 		} else { //Alla andra event
 			
-			System.out.printf("%.2f\t%s\t\t%s\t%s  %s\t%s\t%s\t%s\t%s\n", state.getCurrentTime(), state.getCurrentEvent().toString(),
-					state.getCurrentEvent() instanceof CloseEvent ? "---": state.getCurrentCustomer().getId(),state.isOpen() ? "Ö":"S",
-							state.idleCheckouts, state.timeCheckoutsHaveBeenIdle,state.getNumberOfCustomers(),state.getCompletedCheckouts(),
-							state.missedCustomers);
+			System.out.printf("%.2f\t%s\t\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%.2f\t%s\t%s\n",
+					state.getCurrentTime(),
+					state.getCurrentEvent().toString(),
+					state.getCurrentEvent() instanceof CloseEvent ? "---": state.getCurrentCustomer().getId(),
+					state.isOpen() ? "Ö":"S",
+					state.idleCheckouts,
+					state.timeCheckoutsHaveBeenIdle,
+					state.getNumberOfCustomers(),
+					state.getCompletedCheckouts(),
+					state.missedCustomers,
+					state.queue.totalEntries(),
+					state.getTotalQueueTime(),
+					state.queue.size(),
+					state.queue.toString());
 		}
 	
-		
+		//Resultatutskrifter
 		if(!state.isRunning()) {
-			System.out.println("\nRESULTAT\n======");
+			System.out.println("\nRESULTAT\n======\n");
+			// 1)
+			System.out.printf("1) Av %s kunder handlade %s medan %s missades.\n\n",
+					state.factory.lastCustomerId(),
+					state.factory.lastCustomerId()-state.missedCustomers,
+					state.missedCustomers);
+			// 2)
+			System.out.printf("2) Total tid %s kassor varit lediga: %s te.\n",
+					state.numberOfCheckouts,
+					state.timeCheckoutsHaveBeenIdle);
+			// 2b)
+			System.out.printf("   Genomsnittlig ledig kassatid: %s te (dvs %s%% av tiden från öppning tills sista kunden betalat).\n\n",
+					state.timeCheckoutsHaveBeenIdle,
+					state.timeCheckoutsHaveBeenIdle/state.timeOpen);
+			// 3)
+			System.out.printf("3) Total tid %s kunder tvingats köa: %.2f te.\n   Genomsnittlig kötid: %.2f te.",
+					state.queue.totalEntries(),
+					state.getTotalQueueTime(),
+					state.getTotalQueueTime()/state.getCompletedCheckouts());
+			
 		}
 	}
 }

@@ -17,4 +17,7 @@ public class CustomerSpawner {
 		counter++;
 		return kund;
 	}
+	public int lastCustomerId() {
+		return counter-1;
+	}
 }

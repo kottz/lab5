@@ -32,8 +32,6 @@ public class StopEvent extends Event {
 		
 
 		state.stop();
-		state.updateTotalQueueTime(this.time);
-		
 		state.update();
 		
 	}

@@ -15,7 +15,7 @@ public class FIFO {
 	ArrayList<Customer> fifo = new ArrayList<Customer>();
 	
 	private int maxSize;
-	
+	private int totalEntries;
 	/**
 	 * 
 	 * @return Storlek på kön
@@ -31,7 +31,9 @@ public class FIFO {
 	public int maxSize() {
 		return maxSize;
 	}
-	
+	public int totalEntries() {
+		return totalEntries;
+	}
 	/**
 	 * Returnerar true om 
 	 * @return true if empty
@@ -73,7 +75,7 @@ public class FIFO {
 	 */
 	public void add(Customer c) {
 		fifo.add(c);
-		
+		this.totalEntries++;
 		if(fifo.size() > maxSize) {
 			maxSize = fifo.size();
 		}
