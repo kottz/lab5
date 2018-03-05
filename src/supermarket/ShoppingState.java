@@ -22,7 +22,6 @@ public class ShoppingState extends SimulatorStateADT {
 	private int completedCheckouts = 0;
 	public int missedCustomers = 0;
 	public double timeOpen;
-	private double currentTime; //Tid för aktuella eventet.
 	private double Pmin;
 	private double Pmax;
 	private double Kmin;
@@ -176,9 +175,13 @@ public class ShoppingState extends SimulatorStateADT {
 		return totalQueueTime;
 	}
 	
-	public double updateTotalQueueTime(double updateTime) {
-		return (totalQueueTime+=updateTime);
+	public void setTotalQueueTime(double time) {
+		totalQueueTime += queue.size()*(time-this.getCurrentTime());
 		
+	}
+
+	public void setIdleCheckoutTime(double time) {
+		timeCheckoutsHaveBeenIdle += idleCheckouts*(time-this.getCurrentTime());
 	}
 	/**
 	 * Kallar på setChanged och notifyObservers.
@@ -190,10 +193,6 @@ public class ShoppingState extends SimulatorStateADT {
 	
 	public double getCurrentTime() { //Kallas från vyn, ger tiden för det aktuella eventet
 		return currentEvent.getTime();
-	}
-	
-	public void setCurrentTime(double time) {
-		currentTime = time;
 	}
 	
 	public void openStore() {

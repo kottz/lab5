@@ -31,7 +31,8 @@ public class ArrivalEvent extends Event {
 		c = state.factory.createCustomer();
 		
 		//Sätter aktuella värden och uppdaterar.
-		state.timeCheckoutsHaveBeenIdle += state.idleCheckouts*(time-state.getCurrentTime());
+		state.setIdleCheckoutTime(time);
+		state.setTotalQueueTime(time);
 		state.setCurrentCustomer(c);
 		state.setCurrentEvent(this);
 		state.update();
@@ -39,7 +40,7 @@ public class ArrivalEvent extends Event {
 		if(state.isOpen()) {
 		double nextArrivalTime = time + state.calculateArrivalTime();
 		seq.sortEventQueue(new ArrivalEvent(seq,state,nextArrivalTime));
-		state.updateTotalQueueTime(time);
+		
 		}
 		
 		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {

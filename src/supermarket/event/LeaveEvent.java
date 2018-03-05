@@ -30,7 +30,8 @@ public class LeaveEvent extends Event {
 
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
-		state.timeCheckoutsHaveBeenIdle += state.idleCheckouts*(time-state.getCurrentTime());
+		state.setIdleCheckoutTime(time);
+		state.setTotalQueueTime(time);
 		state.setCurrentEvent(this);
 		state.setCurrentCustomer(c);
 		state.update();

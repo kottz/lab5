@@ -27,7 +27,8 @@ public class CloseEvent extends Event {
 	@Override
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
-		state.timeCheckoutsHaveBeenIdle += state.idleCheckouts*(time-state.getCurrentTime());
+		state.setIdleCheckoutTime(time);
+		state.setTotalQueueTime(time);
 		state.setCurrentEvent(this);
 		state.update();
 
