@@ -17,7 +17,7 @@ public class ShoppingState extends SimulatorStateADT {
 	private double lambda;
 	public int numberOfCheckouts;
 	public int idleCheckouts;
-	public int timeCheckoutsHaveBeenIdle = 0;
+	public double timeCheckoutsHaveBeenIdle = 0;
 	private int maxCustomers;
 	private int completedCheckouts = 0;
 	public int missedCustomers = 0;

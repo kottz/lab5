@@ -33,6 +33,7 @@ public class PayEvent extends Event {
 	}
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
+		state.timeCheckoutsHaveBeenIdle += state.idleCheckouts*(time-state.getCurrentTime());
 		state.setCurrentEvent(this);
 		state.setCurrentCustomer(c);
 		state.update();
