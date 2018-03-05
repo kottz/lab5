@@ -1,6 +1,7 @@
 package supermarket;
 import sim.SimView;
 import java.util.Observable;
+import supermarket.event.*;
 
 public class ShoppingView extends SimView{
 
@@ -23,18 +24,20 @@ public class ShoppingView extends SimView{
 			System.out.println("Betaltider, [K_min..Kmax]:\t" + "[" + state.getKmin() + ".." + state.getKmax() + "]");
 			System.out.println("Frö, f:\t" + state.getSeed());
 			System.out.println("\nFÖRLOPP\n=====");
-			System.out.println("Tid\tHändelse\tKund\t?  led    ledT    I     $    :-(   köat    köT   köar  [Kassakö..]");
+			System.out.println("Tid\tHändelse\tKund\t?  led\tledT\tI\t$\t:-(   köat    köT   köar  [Kassakö..]");
 			startFlag = false;
 		}
 		
 		//Start & Stop
-		if(state.getCurrentEvent().toString() == "Start" || state.getCurrentEvent().toString() == "Stop") {
+		if(state.getCurrentEvent() instanceof StartEvent || state.getCurrentEvent() instanceof StopEvent) {
 			System.out.printf("%.0f\t%s\n", state.getCurrentTime(), state.getCurrentEvent().toString());
 			
 		} else { //Alla andra event
 			
-			System.out.printf("%.2f\t%s\t\t%s\t%s\n", state.getCurrentTime(), state.getCurrentEvent().toString(),
-					state.getCurrentCustomer().getId(),state.isOpen() ? "Ö":"S");
+			System.out.printf("%.2f\t%s\t\t%s\t%s  %s\t%s\t%s\t%s\t%s\n", state.getCurrentTime(), state.getCurrentEvent().toString(),
+					state.getCurrentEvent() instanceof CloseEvent ? "---": state.getCurrentCustomer().getId(),state.isOpen() ? "Ö":"S",
+							state.idleCheckouts, state.timeCheckoutsHaveBeenIdle,state.getNumberOfCustomers(),state.getCompletedCheckouts(),
+							state.missedCustomers);
 		}
 	
 		

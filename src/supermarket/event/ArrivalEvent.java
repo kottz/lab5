@@ -45,7 +45,7 @@ public class ArrivalEvent extends Event {
 		
 		if(state.isOpen() && state.getMaxCustomers() > state.getNumberOfCustomers()) {
 			//c = state.factory.createCustomer();
-			//state.queue.add(c);
+			state.addCustomer(c);
 			double nextPayTime = time + state.calculateShoppingTime();
 			seq.sortEventQueue(new PayEvent(seq, state,c, nextPayTime));
 		
@@ -53,9 +53,9 @@ public class ArrivalEvent extends Event {
 		//state.notifyObservers();
 		//state.hasChanged();
 		}
-		else {
+		else if (state.isOpen()){
 			
-			state.missedCustomers--;
+			state.missedCustomers++;
 		}
 		
 	}

@@ -105,11 +105,12 @@ public class ShoppingState extends SimulatorStateADT {
 	 * @param c kund som skall tas bort
 	 */
 	public void removeCustomer(Customer c){
-		for(Customer cust: customersShopping){
+		customersShopping.remove(c);
+		/*for(Customer cust: customersShopping){
 			if(cust.getId() == c.getId()){
 				customersShopping.remove(cust);
 			}
-		}
+		}*/
 	}
 	/**
 	 * Lägger till en kund i affären
@@ -122,6 +123,7 @@ public class ShoppingState extends SimulatorStateADT {
 	public boolean freeCheckout() {
 		return idleCheckouts > 0;
 	}
+	
 	/**
 	 * Returnerar om tillståndet är startat eller ej
 	 * 
