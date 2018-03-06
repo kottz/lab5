@@ -176,16 +176,26 @@ public class ShoppingState extends SimulatorStateADT {
 	public int getCompletedCheckouts(){
 		return completedCheckouts;
 	}
-	
+	/**
+	 * Returnerar den totala kötiden.
+	 * @return
+	 */
 	public double getTotalQueueTime() {
 		return totalQueueTime;
 	}
 	
+	/**
+	 * Uppdaterar den totala kötiden med inparametern
+	 * @param time
+	 */
 	public void setTotalQueueTime(double time) {
 		totalQueueTime += queue.size()*(time-this.getCurrentTime());
 		
 	}
-
+	/**
+	 * Uppdaterar timeCheckoutsHaveBeenIdle med inparametern.
+	 * @param time
+	 */
 	public void setIdleCheckoutTime(double time) {
 		timeCheckoutsHaveBeenIdle += idleCheckouts*(time-this.getCurrentTime());
 	}
@@ -196,19 +206,30 @@ public class ShoppingState extends SimulatorStateADT {
 		setChanged();
 		notifyObservers();
 	}
-	
-	public double getCurrentTime() { //Kallas från vyn, ger tiden för det aktuella eventet
+	/**
+	 * Kallas från vyn, ger tiden för det aktuella eventet
+	 * @return
+	 */
+	public double getCurrentTime() {
 		return currentEvent.getTime();
 	}
-	
+	/**
+	 * Sätter Open till true.
+	 */
 	public void openStore() {
 		open = true;
 	}
-	
+	/**
+	 * Sätter Open till false.
+	 */
 	public void closeStore() {
 		open = false;
 	}
 	
+	/**
+	 * Getters & Setters
+	 * @return
+	 */
 	public double getLambda() {
 		return lambda;
 	}

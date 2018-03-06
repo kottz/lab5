@@ -21,7 +21,9 @@ public class Simulator {
 		this.seq = new SortedSequence(eq);
 	}
 	
-	
+	/**
+	 * Startar simulationen.
+	 */
 	public void run() {
 		state.start();
 		while(!eq.getArray().isEmpty() && state.isRunning) {	

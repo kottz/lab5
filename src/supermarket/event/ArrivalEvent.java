@@ -18,6 +18,12 @@ public class ArrivalEvent extends Event {
 	private ShoppingState state;
 	private Customer c;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 * @param time
+	 */
 	public ArrivalEvent(SortedSequence seq,  ShoppingState state, double time) {
 		this.time = time;
 		this.seq = seq;

@@ -22,6 +22,13 @@ public class PayEvent extends Event {
 	private Customer c;
 	private FIFO q;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 * @param c
+	 * @param time
+	 */
 	public PayEvent(SortedSequence seq, ShoppingState state, Customer c, double time) {
 		this.seq = seq;
 		this.state = state;

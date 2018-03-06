@@ -16,12 +16,19 @@ public class CustomerSpawner {
 	public CustomerSpawner() {
 		counter = 0;
 	}
-	
+	/**
+	 * Skapar en ny kund.
+	 * @return
+	 */
 	public Customer createCustomer() {
 		Customer kund = new Customer(counter);
 		counter++;
 		return kund;
 	}
+	/**
+	 * returnerar föregående kund id.
+	 * @return
+	 */
 	public int lastCustomerId() {
 		return counter-1;
 	}
