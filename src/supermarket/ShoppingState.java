@@ -171,7 +171,9 @@ public class ShoppingState extends SimulatorStateADT {
 	}
 	
 	public void setLastCheckoutTime(double t) {
-		lastCheckoutTime = t;
+		if(t > lastCheckoutTime) {
+			lastCheckoutTime = t;
+		}
 	}
 	public double getLastCheckoutTime() {
 		return lastCheckoutTime;

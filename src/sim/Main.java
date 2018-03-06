@@ -30,7 +30,7 @@ public class Main {
 		long seed = 1234;
 		
 		//Sim2.txt
-	/*	maximumCapacity = 7;
+		maximumCapacity = 7;
 		hoursOpen = 8;
 		minPickTime = 0.6;
 		maxPickTime = 0.9;
@@ -38,7 +38,7 @@ public class Main {
 		maxPayTime = 0.6;
 		lambda = 3.0;
 		seed = 13;
-	*/
+	
 		
 		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
 				minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
