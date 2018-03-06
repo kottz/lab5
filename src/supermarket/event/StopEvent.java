@@ -4,6 +4,11 @@ import supermarket.ShoppingState;
 import sim.SimulatorStateADT;
 import sim.SortedSequence;
 /**
+ * 
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Event som körs då simuleringen avslutas.
  *
  */

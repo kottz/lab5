@@ -8,6 +8,13 @@ public class ShoppingView extends SimView{
 	private ShoppingState state;
 	private boolean startFlag = true;
 	
+	
+	/**
+	 * 
+	 * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+	 *
+	 */
+	
 	public ShoppingView(ShoppingState state) {
 		this.state = state;
 	}

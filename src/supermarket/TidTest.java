@@ -5,6 +5,12 @@ import sim.SortedSequence;
 import supermarket.customer.Customer;
 import random.*;
 
+/**
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
+ */
+
 public class TidTest {
 
 	// Proof-of-concept tidräkning

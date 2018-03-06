@@ -1,6 +1,10 @@
 package sim;
 
 /**
+ * 
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Simulator som kör event i en EventQueue
  *
  */

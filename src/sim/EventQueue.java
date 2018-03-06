@@ -3,7 +3,7 @@ package sim;
 import java.util.ArrayList;
 /**
  * 
- * @author Oskar
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
  *
  */
 

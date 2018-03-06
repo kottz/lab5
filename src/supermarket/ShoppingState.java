@@ -40,6 +40,12 @@ public class ShoppingState extends SimulatorStateADT {
 	public ArrayList<Customer> customersShopping;
 	public CustomerSpawner factory;
 	
+	/**
+	 * 
+	 * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+	 *
+	 */
+	
 	public ShoppingState(double lambda, long seed, int maxCustomers, int numberOfCheckouts, double Pmin, double Pmax, double Kmin, double Kmax, double timeOpen) {
 		this.maxCustomers = maxCustomers;
 		this.timeOpen = timeOpen;

@@ -3,6 +3,10 @@ import sim.Event;
 import sim.SortedSequence;
 import supermarket.ShoppingState;
 /**
+ * 
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Event som körs då snabbköpet stänger för dagen.
  *
  */

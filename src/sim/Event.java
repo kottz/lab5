@@ -3,7 +3,7 @@ package sim;
 
 /**
  * 
- * @author Oskar
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
  *
  */
 public abstract class Event {

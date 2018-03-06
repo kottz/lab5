@@ -4,6 +4,10 @@ import sim.SortedSequence;
 import supermarket.ShoppingState;
 import supermarket.customer.Customer;
 /**
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Event som körs då en kund lämnar snabbköpet.
  *
  */

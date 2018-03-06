@@ -1,6 +1,10 @@
 package supermarket.customer;
 
 /**
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Varje enskild kund representeras av instans av denna klass.
  *
  */
