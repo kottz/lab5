@@ -244,5 +244,13 @@ public class ShoppingState extends SimulatorStateADT {
 	public void setCurrentCustomer(Customer c) {
 		currentCustomer = c;
 	}
+	
+	public int getNumOfMissedCustomers(){
+		return missedCustomers;
+	}
+	
+	public double getTimeCheckoutsHaveBeenIdle(){
+		return timeCheckoutsHaveBeenIdle;
+	}
 
 }
