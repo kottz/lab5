@@ -19,6 +19,12 @@ public class StopEvent extends SimStopEvent {
 	private SortedSequence seq;
 	private ShoppingState state;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 * @param time
+	 */
 	public StopEvent(SortedSequence seq, ShoppingState state, double time) {
 		this.seq = seq;
 		this.state = state;

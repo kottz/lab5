@@ -20,6 +20,11 @@ public class StartEvent extends SimStartEvent {
 	private SortedSequence seq;
 	private ShoppingState state;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 */
 	public StartEvent(SortedSequence seq, ShoppingState state) {
 		this.seq = seq;
 		this.state = state;

@@ -20,6 +20,9 @@ public class ShoppingView extends SimView{
 	}
 	
 	
+	 /**
+	  * @param o,arg
+	  */
 	public void update(Observable o, Object arg) {
 		//Printas i början
 		if(startFlag) {

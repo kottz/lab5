@@ -18,6 +18,13 @@ public class LeaveEvent extends Event {
 	private double time;
 	private Customer c;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 * @param c
+	 * @param timeOfExecution
+	 */
 	public LeaveEvent(SortedSequence seq, ShoppingState state, Customer c, double timeOfExecution) {
 		this.seq = seq;
 		this.state = state;

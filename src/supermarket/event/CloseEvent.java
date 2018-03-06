@@ -16,6 +16,12 @@ public class CloseEvent extends Event {
 	private SortedSequence seq;
 	private ShoppingState state;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 * @param time
+	 */
 	public CloseEvent(SortedSequence seq, ShoppingState state, double time) {
 		this.seq = seq;
 		this.state = state;
