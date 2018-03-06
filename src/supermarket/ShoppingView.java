@@ -26,13 +26,13 @@ public class ShoppingView extends SimView{
 	public void update(Observable o, Object arg) {
 		//Printas i början
 		if(startFlag) {
-			System.out.printf("Parametrar\n========\n"
-					+ "Antal Kassor, N:\t%s\n"
-					+ "Max som ryms, M:\t%s\n"
-					+ "Ankomsthastighet, lamba:\t%s\n"
-					+ "Plocktider, [P_min..Pmax]:\t[%s..%s]\n"
-					+ "Betaltider, [K_min..Kmax]:\t[%s..%s]\n"
-					+ "Frö, f:\t%s\n"
+			System.out.printf("PARAMETRAR\n========\n"
+					+ "Antal Kassor, N..........: %s\n"
+					+ "Max som ryms, M..........: %s\n"
+					+ "Ankomsthastighet, lamba..: %s\n"
+					+ "Plocktider, [P_min..Pmax]: [%s..%s]\n"
+					+ "Betaltider, [K_min..Kmax]: [%s..%s]\n"
+					+ "Frö, f...................: %s\n"
 					+ "\nFÖRLOPP\n=====\n"
 					+ "Tid\tHändelse\tKund\t?\tled\tledT\tI\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]\n",
 					state.numberOfCheckouts,
