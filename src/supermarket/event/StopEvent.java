@@ -1,5 +1,6 @@
 package supermarket.event;
 import sim.Event;
+import sim.SimStopEvent;
 import supermarket.ShoppingState;
 import sim.SimulatorStateADT;
 import sim.SortedSequence;
@@ -12,12 +13,18 @@ import sim.SortedSequence;
  * Event som körs då simuleringen avslutas.
  *
  */
-public class StopEvent extends Event {
+public class StopEvent extends SimStopEvent {
 	
 	private double time;
 	private SortedSequence seq;
 	private ShoppingState state;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 * @param time
+	 */
 	public StopEvent(SortedSequence seq, ShoppingState state, double time) {
 		this.seq = seq;
 		this.state = state;

@@ -1,5 +1,6 @@
 package supermarket.event;
 import sim.Event;
+import sim.SimStartEvent;
 import supermarket.ShoppingState;
 import sim.SimulatorStateADT;
 import sim.SortedSequence;
@@ -13,12 +14,17 @@ import supermarket.customer.CustomerSpawner;
  * Event som körs då simuleringen startar.
  *
  */
-public class StartEvent extends Event {
+public class StartEvent extends SimStartEvent {
 	
 	private double time;
 	private SortedSequence seq;
 	private ShoppingState state;
 	
+	/**
+	 * 
+	 * @param seq
+	 * @param state
+	 */
 	public StartEvent(SortedSequence seq, ShoppingState state) {
 		this.seq = seq;
 		this.state = state;
