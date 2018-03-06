@@ -7,6 +7,10 @@ import supermarket.customer.Customer;
 import supermarket.customer.CustomerSpawner;
 
 /**
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * FIFO-kö som används som kassakö.
  *
  */

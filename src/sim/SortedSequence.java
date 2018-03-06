@@ -1,11 +1,13 @@
 package sim;
-import supermarket.event.*;
 /**
  * 
  * Klassen tar en EventQueue som dess parameter och sedan sorterar den efter
  * tid. Där tidigast är först osv.
  * 
- * @author Oskar
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  *
  */
 public class SortedSequence {

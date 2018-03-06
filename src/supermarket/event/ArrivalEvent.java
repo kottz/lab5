@@ -4,6 +4,10 @@ import supermarket.ShoppingState;
 import supermarket.customer.Customer;
 import sim.SortedSequence;
 /**
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Event som körs då en kund anländer.
  *
  */

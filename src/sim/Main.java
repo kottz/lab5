@@ -4,7 +4,8 @@ import supermarket.ShoppingState;
 import supermarket.ShoppingView;
 
 /**
- * Mainmetod f√∂r att k√∂ra simulering
+ * 
+ * @author Olof Bourghardt, August Brunns‰ter, Oskar Havo , Edward K‰llstedt
  *
  */
 public class Main {

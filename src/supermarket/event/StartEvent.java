@@ -6,6 +6,11 @@ import sim.SimulatorStateADT;
 import sim.SortedSequence;
 import supermarket.customer.CustomerSpawner;
 /**
+ * 
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Event som körs då simuleringen startar.
  *
  */

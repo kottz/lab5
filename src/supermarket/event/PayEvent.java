@@ -7,6 +7,10 @@ import random.*;
 import supermarket.FIFO;
 
 /**
+ * 
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Event som körs då en kund står i kassan och betalar.
  *
  */

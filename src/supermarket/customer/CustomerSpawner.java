@@ -1,6 +1,11 @@
 package supermarket.customer;
 
 /**
+ * 
+ *
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
  * Används för att skapa kunder med olika id:n. 
  *
  */

@@ -1,7 +1,11 @@
 package sim;
 
 import java.util.Observable;
-
+/**
+ * 
+ * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ *
+ */
 public abstract class SimulatorStateADT extends Observable {
 	
 	protected boolean isRunning = false;
