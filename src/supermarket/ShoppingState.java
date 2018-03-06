@@ -267,9 +267,9 @@ public class ShoppingState extends SimulatorStateADT {
 	}
 	public void setCurrentEvent(Event e) {
 		//Räknar ut lastCheckoutTime
-		if(this.currentEvent instanceof LeaveEvent && !(e instanceof StopEvent)) {
-			this.lastCheckoutTime = e.getTime();
-		}
+	//	if(this.currentEvent instanceof LeaveEvent && !(e instanceof StopEvent)) {
+	//		this.lastCheckoutTime = e.getTime();
+	//	}
 		currentEvent = e;
 	}
 	public Event getCurrentEvent() {
