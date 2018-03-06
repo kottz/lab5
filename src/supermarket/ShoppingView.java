@@ -32,7 +32,7 @@ public class ShoppingView extends SimView{
 					+ "Frö, f:\t%s\n"
 					+ "\nFÖRLOPP\n=====\n"
 					+ "Tid\tHändelse\tKund\t?\tled\tledT\tI\t$\t:-(\tköat\tköT\tköar\t[Kassakö..]\n",
-					state.getNumberOfCustomers(),
+					state.numberOfCheckouts,
 					state.getMaxCustomers(),
 					state.getLambda(),
 					state.getPmin(),state.getPmax(),
