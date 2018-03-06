@@ -29,6 +29,7 @@ public class ShoppingState extends SimulatorStateADT {
 	private double seed;
 	private Event currentEvent;
 	private Customer currentCustomer;
+	private double lastCheckoutTime;
 	
 	// Nya
 	private double totalQueueTime;
@@ -167,6 +168,13 @@ public class ShoppingState extends SimulatorStateADT {
 	 */
 	public void completedCheckout(){
 		completedCheckouts++;
+	}
+	
+	public void setLastCheckoutTime(double t) {
+		lastCheckoutTime = t;
+	}
+	public double getLastCheckoutTime() {
+		return lastCheckoutTime;
 	}
 	/**
 	 * Returnerar antalet kunder som utfört ett köp i butiken

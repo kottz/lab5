@@ -41,7 +41,7 @@ public class ArrivalEvent extends Event {
 		c = state.factory.createCustomer();
 		
 		//Sätter aktuella värden och uppdaterar.
-		state.setIdleCheckoutTime(time);
+		if(state.isOpen()) {state.setIdleCheckoutTime(time);}
 		state.setTotalQueueTime(time);
 		state.setCurrentCustomer(c);
 		state.setCurrentEvent(this);

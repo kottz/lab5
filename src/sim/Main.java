@@ -5,7 +5,7 @@ import supermarket.ShoppingView;
 
 /**
  * 
- * @author Olof Bourghardt, August Brunnsäter, Oskar Havo , Edward Källstedt
+ * @author Olof Bourghardt, August Brunnsï¿½ter, Oskar Havo , Edward Kï¿½llstedt
  *
  */
 public class Main {
@@ -28,6 +28,17 @@ public class Main {
 		
 		double lambda = 1.0;
 		long seed = 1234;
+		
+		//Sim2.txt
+	/*	maximumCapacity = 7;
+		hoursOpen = 8;
+		minPickTime = 0.6;
+		maxPickTime = 0.9;
+		minPayTime = 0.35;
+		maxPayTime = 0.6;
+		lambda = 3.0;
+		seed = 13;
+	*/
 		
 		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
 				minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
