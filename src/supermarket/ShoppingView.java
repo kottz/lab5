@@ -71,7 +71,7 @@ public class ShoppingView extends SimView{
 					state.timeCheckoutsHaveBeenIdle);
 			// 2b)
 			System.out.printf("   Genomsnittlig ledig kassatid: %.2f te (dvs %.2f%% av tiden från öppning tills sista kunden betalat).\n\n",
-					state.timeCheckoutsHaveBeenIdle,
+					state.timeCheckoutsHaveBeenIdle/2,
 					state.timeCheckoutsHaveBeenIdle/state.timeOpen);
 			// 3)
 			System.out.printf("3) Total tid %s kunder tvingats köa: %.2f te.\n   Genomsnittlig kötid: %.2f te.",
