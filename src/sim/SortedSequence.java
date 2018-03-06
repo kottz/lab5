@@ -48,7 +48,4 @@ public class SortedSequence {
 		}
 
 	}
-	public double getNextTime() {
-		return this.eq.getArray().get(0).getTime();
-	}
 }

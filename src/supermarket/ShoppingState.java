@@ -2,6 +2,8 @@ package supermarket;
 
 import java.util.ArrayList;
 import sim.Event;
+import supermarket.event.LeaveEvent;
+import supermarket.event.StopEvent;
 
 import random.*;
 import sim.SimulatorStateADT;
@@ -264,6 +266,10 @@ public class ShoppingState extends SimulatorStateADT {
 		return seed;
 	}
 	public void setCurrentEvent(Event e) {
+		//Räknar ut lastCheckoutTime
+		if(this.currentEvent instanceof LeaveEvent && !(e instanceof StopEvent)) {
+			this.lastCheckoutTime = e.getTime();
+		}
 		currentEvent = e;
 	}
 	public Event getCurrentEvent() {
