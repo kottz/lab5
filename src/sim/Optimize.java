@@ -9,9 +9,9 @@ import supermarket.OptimizeView;
 
 public class Optimize implements K {
 
-	int[] missedCustomersAllRuns = new int[999];
-	double[] timeCheckoutsHaveBeenIdleAllRuns = new double[999];
-	int[] numberOfCashiersAllRuns = new int[999];
+	int[] missedCustomersAllRuns = new int[530];
+	double[] timeCheckoutsHaveBeenIdleAllRuns = new double[530];
+	int[] numberOfCashiersAllRuns = new int[530];
 	double minCheckoutsIdle;
 	int minCashiers;
 	
@@ -50,7 +50,7 @@ public class Optimize implements K {
 		hoursOpen = END_TIME;
 		stopTime = STOP_TIME;
 		
-		for(int i = 0; i < 999; i++){
+		for(int i = 0; i < 530; i++){
 			numOfCashiers = 2+i;
 			
 			ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,

@@ -16,7 +16,7 @@ public class Main implements K {
 	 */	
 	public static void main(String[] args) {
 		
-		int numOfCashiers = 4;
+		int numOfCashiers = 2;
 		int maximumCapacity = 5;
 		double hoursOpen = 10;
 		double stopTime = 999;
