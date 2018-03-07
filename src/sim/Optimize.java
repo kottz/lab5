@@ -49,8 +49,6 @@ public class Optimize implements K {
 		hoursOpen = END_TIME;
 		stopTime = STOP_TIME;
 		
-		
-		
 		for(int i = 0; i < 999; i++){
 			numOfCashiers = 2+i;
 			
@@ -102,23 +100,15 @@ public class Optimize implements K {
 	}
 	
 	private int getMinCashiers(){
-		double minTime = Double.MAX_VALUE;
-		int minMissedCustomers = -1;
+		int minCashiers = Integer.MAX_VALUE;
+		int minMissedCustomers = Integer.MAX_VALUE;
 		for(int i = 0; i < missedCustomersAllRuns.length; i++){
-			if(missedCustomersAllRuns[i] == 0 && timeCheckoutsHaveBeenIdleAllRuns[i] < minTime){
-				minTime = timeCheckoutsHaveBeenIdleAllRuns[i];
+			if(missedCustomersAllRuns[i] < minMissedCustomers){
 				minMissedCustomers = missedCustomersAllRuns[i];
+				minCashiers = numberOfCashiersAllRuns[i];
 			}
 		}
-		return getCashier(minMissedCustomers, minTime);
+		return minCashiers;
 	}
 	
-	private int getCashier(int missed, double time){
-		for(int i = 0; i < missedCustomersAllRuns.length; i++){
-			if(missed == missedCustomersAllRuns[i] && time == timeCheckoutsHaveBeenIdleAllRuns[i]){
-				return numberOfCashiersAllRuns[i];
-			}
-		}
-		return -1;
-	}
 }

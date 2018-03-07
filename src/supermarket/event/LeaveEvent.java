@@ -32,13 +32,24 @@ public class LeaveEvent extends Event {
 		
 		time = timeOfExecution;
 	}
+	
+	/**
+	 * Returnerar tiden då eventet skall exekveras
+	 */
 	public double getTime() {
 		return time;
 	}
+	
+	/**
+	 * Returnerar namnet på eventet
+	 */
 	public String toString() {
 		return "Betal";
 	}
 
+	/**
+	 * Kör eventet
+	 */
 	public void execute() {
 		//Sätter aktuella värden och uppdaterar.
 		state.setIdleCheckoutTime(time);
