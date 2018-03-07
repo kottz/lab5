@@ -50,6 +50,8 @@ public class Optimize implements K {
 		hoursOpen = END_TIME;
 		stopTime = STOP_TIME;
 		
+		int minMissedCustomers = Integer.MAX_VALUE;
+		
 		for(int i = 0; i < 530; i++){
 			numOfCashiers = 2+i;
 			
@@ -71,14 +73,14 @@ public class Optimize implements K {
 			
 			sim1.run();
 			
-			missedCustomersAllRuns[i] = state.getNumOfMissedCustomers();
-			timeCheckoutsHaveBeenIdleAllRuns[i] = state.getTimeCheckoutsHaveBeenIdle();
-			numberOfCashiersAllRuns[i] = numOfCashiers;
+			if(state.getNumOfMissedCustomers() < minMissedCustomers) {
+				minMissedCustomers = state.getNumOfMissedCustomers();
+				minCashiers = numOfCashiers;
+			}
 		}
 		
-		minCashiers = getMinCashiers();
-		
 		numOfCashiers = minCashiers;
+		System.out.println(numOfCashiers);
 		
 		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
 				minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
@@ -98,18 +100,6 @@ public class Optimize implements K {
 		
 		sim1.run();
 		
-	}
-	
-	private int getMinCashiers(){
-		int minCashiers = Integer.MAX_VALUE;
-		int minMissedCustomers = Integer.MAX_VALUE;
-		for(int i = 0; i < missedCustomersAllRuns.length; i++){
-			if(missedCustomersAllRuns[i] < minMissedCustomers){
-				minMissedCustomers = missedCustomersAllRuns[i];
-				minCashiers = numberOfCashiersAllRuns[i];
-			}
-		}
-		return minCashiers;
 	}
 	
 }
