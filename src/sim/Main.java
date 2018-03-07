@@ -8,7 +8,7 @@ import supermarket.ShoppingView;
  * @author Olof Bourghardt, August Brunns�ter, Oskar Havo , Edward K�llstedt
  *
  */
-public class Main {
+public class Main implements K {
 
 	/**
 	 * Mainmetod som kör simulationen
@@ -39,6 +39,15 @@ public class Main {
 		lambda = 3.0;
 		seed = 13;
 	
+/*		numOfCashiers = (int) L;
+		maximumCapacity = M;
+		hoursOpen = END_TIME;
+		minPickTime = LOW_COLLECTION_TIME;
+		maxPickTime = HIGH_COLLECTION_TIME;
+		minPayTime = LOW_PAYMENT_TIME;
+		maxPayTime = HIGH_PAYMENT_TIME;
+		lambda = 3.0;
+		seed = 1234	;*/
 		
 		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
 				minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);

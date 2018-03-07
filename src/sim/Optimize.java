@@ -6,7 +6,7 @@ import supermarket.event.CloseEvent;
 import supermarket.event.StartEvent;
 import supermarket.event.StopEvent;
 
-public class Optimize {
+public class Optimize implements K {
 
 	int[] missedCustomersAllRuns = new int[999];
 	double[] timeCheckoutsHaveBeenIdleAllRuns = new double[999];
@@ -26,6 +26,8 @@ public class Optimize {
 	
 	double lambda = 3.0;
 	long seed = 13;
+
+
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -34,6 +36,21 @@ public class Optimize {
 	}
 	
 	public void run(){
+		maximumCapacity = M;
+		lambda = L;
+		
+		minPickTime = LOW_COLLECTION_TIME;
+		maxPickTime = HIGH_COLLECTION_TIME;
+		
+		minPayTime = LOW_PAYMENT_TIME;
+		maxPayTime = HIGH_PAYMENT_TIME;
+		
+		seed = SEED;
+		hoursOpen = END_TIME;
+		stopTime = STOP_TIME;
+		
+		
+		
 		for(int i = 0; i < 999; i++){
 			numOfCashiers = 2+i;
 			
