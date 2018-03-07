@@ -28,18 +28,20 @@ public class SortedSequence {
 	 * @param e
 	 */
 	public void sortEventQueue(Event e) {
-		// Basfall
+		// Listan tom? Lägg bara till eventet
 		if (this.eq.getArray().size() == 0) {
 			this.eq.getArray().add(e);
 		} else {
+			//Fler en ett element? Jämför dom enligt tid.
 			for (int i = 0; i < this.eq.getArray().size(); i++) {
 
 				// Jämför tiden hos inparametern med tiden hos listans index i.
 				if ((e.getTime()) < this.eq.getArray().get(i).getTime()) {
 					this.eq.getArray().add(i, e);
 					break;
-
-				} else if (i == this.eq.getArray().size() - 1) { // Slutvillkor.
+					
+					// I slutet listan ? Då är elementet störst, lägg till det.
+				} else if (i == this.eq.getArray().size() - 1) { //
 					this.eq.getArray().add(e);
 					break;
 				}
