@@ -30,14 +30,14 @@ public class Main implements K {
 		long seed = 1234;
 		
 		//Sim2.txt
-		maximumCapacity = 7;
+		/*maximumCapacity = 7;
 		hoursOpen = 8;
 		minPickTime = 0.6;
 		maxPickTime = 0.9;
 		minPayTime = 0.35;
 		maxPayTime = 0.6;
 		lambda = 3.0;
-		seed = 13;
+		seed = 13;*/
 	
 /*		numOfCashiers = (int) L;
 		maximumCapacity = M;

@@ -47,7 +47,7 @@ public interface K {
   
 	// Ex 4
 	
-/*	
+	
     public static final int M = 100;
     public static final double L = 50;
 
@@ -60,7 +60,7 @@ public interface K {
     public static final int SEED = 42;
     public static final double END_TIME = 20.0d;
     public static final double STOP_TIME = 999.0d;
-*/
+
     // Ex 5
    
     /*public static final int M = 1400;
@@ -93,7 +93,7 @@ public interface K {
 
 // Ex 7
     
-    public static final int M = 1400;
+    /*public static final int M = 1400;
     public static final double L = 2000;
 
     public static final double LOW_COLLECTION_TIME = 0.45d;
@@ -104,6 +104,6 @@ public interface K {
 
     public static final int SEED = 42;
     public static final double END_TIME = 20.0d;
-    public static final double STOP_TIME = 999.0d;
+    public static final double STOP_TIME = 999.0d;*/
 
 }

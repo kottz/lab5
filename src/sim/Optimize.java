@@ -1,5 +1,8 @@
 package sim;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import supermarket.ShoppingState;
 import supermarket.ShoppingView;
 import supermarket.event.CloseEvent;
@@ -9,9 +12,9 @@ import supermarket.OptimizeView;
 
 public class Optimize implements K {
 
-	int[] missedCustomersAllRuns = new int[530];
-	double[] timeCheckoutsHaveBeenIdleAllRuns = new double[530];
-	int[] numberOfCashiersAllRuns = new int[530];
+	int[] missedCustomersAllRuns = new int[M];
+	double[] timeCheckoutsHaveBeenIdleAllRuns = new double[M];
+	int[] numberOfCashiersAllRuns = new int[M];
 	double minCheckoutsIdle;
 	int minCashiers;
 	
@@ -33,10 +36,10 @@ public class Optimize implements K {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Optimize o = new Optimize();
-		o.run();
+		System.out.println("Final result: " + o.metod3(SEED));
 	}
 	
-	public void run(){
+	public int run(long seed){
 		maximumCapacity = M;
 		lambda = L;
 		
@@ -46,13 +49,13 @@ public class Optimize implements K {
 		minPayTime = LOW_PAYMENT_TIME;
 		maxPayTime = HIGH_PAYMENT_TIME;
 		
-		seed = SEED;
+		this.seed = seed;
 		hoursOpen = END_TIME;
 		stopTime = STOP_TIME;
 		
 		int minMissedCustomers = Integer.MAX_VALUE;
 		
-		for(int i = 0; i < 530; i++){
+		for(int i = 0; i < M; i++){
 			numOfCashiers = 2+i;
 			
 			ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
@@ -80,9 +83,9 @@ public class Optimize implements K {
 		}
 		
 		numOfCashiers = minCashiers;
-		System.out.println(numOfCashiers);
+		return numOfCashiers;
 		
-		ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
+		/*ShoppingState state = new ShoppingState(lambda, seed, maximumCapacity, numOfCashiers,
 				minPickTime, maxPickTime, minPayTime, maxPayTime, hoursOpen);
 		OptimizeView view = new OptimizeView(state);
 		state.addObserver(view);
@@ -98,8 +101,33 @@ public class Optimize implements K {
 		eq.addEvent(close);
 		eq.addEvent(stop);
 		
-		sim1.run();
+		sim1.run();*/
 		
+	}
+	
+	public int metod3(long seed){
+		boolean keepGoing = true;
+		int counter = 0;
+		int biggestValue = Integer.MIN_VALUE;
+		ArrayList<Integer> optimalCashiers = new ArrayList<Integer>();
+		Random random = new Random(seed);
+		while(keepGoing){
+			optimalCashiers.add(run(random.nextLong()));
+			if(optimalCashiers.size() > 1){
+				if(optimalCashiers.get(optimalCashiers.size()-1) >= biggestValue){
+					biggestValue = optimalCashiers.get(optimalCashiers.size()-1);
+					counter =0;
+					
+					//System.out.println(counter);
+				}else{
+					counter++;
+					if(counter == 100){
+						return optimalCashiers.get(optimalCashiers.size()-1);
+					}
+				}
+			}
+		}
+		return -1;
 	}
 	
 }
