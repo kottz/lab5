@@ -16,8 +16,6 @@ import supermarket.FIFO;
  */
 public class PayEvent extends Event {
 	
-	private double time;
-	private SortedSequence seq;
 	private ShoppingState state;
 	private Customer c;
 	private FIFO q;
@@ -36,9 +34,7 @@ public class PayEvent extends Event {
 		this.c = c;
 		this.q = state.queue;
 	}
-	public double getTime() {
-		return time;
-	}
+
 	public String toString() {
 		return "Plock";
 	}

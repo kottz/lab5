@@ -6,11 +6,11 @@ import supermarket.event.LeaveEvent;
 import supermarket.event.StopEvent;
 
 import random.*;
-import sim.SimulatorStateADT;
+import sim.SimulatorState;
 import supermarket.customer.Customer;
 import supermarket.customer.CustomerSpawner;
 
-public class ShoppingState extends SimulatorStateADT {
+public class ShoppingState extends SimulatorState {
 	
 	private ExponentialRandomStream ERS;
 	private UniformRandomStream URSPay;

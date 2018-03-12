@@ -2,7 +2,7 @@ package supermarket.event;
 import sim.Event;
 import sim.SimStopEvent;
 import supermarket.ShoppingState;
-import sim.SimulatorStateADT;
+import sim.SimulatorState;
 import sim.SortedSequence;
 /**
  * 
@@ -15,8 +15,6 @@ import sim.SortedSequence;
  */
 public class StopEvent extends SimStopEvent {
 	
-	private double time;
-	private SortedSequence seq;
 	private ShoppingState state;
 	
 	/**
@@ -31,9 +29,6 @@ public class StopEvent extends SimStopEvent {
 		this.time = time;
 	}
 
-	public double getTime() {
-		return time;
-	}
 	public String toString() {
 		return "Stop";
 	}

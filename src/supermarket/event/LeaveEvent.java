@@ -13,9 +13,7 @@ import supermarket.customer.Customer;
  */
 public class LeaveEvent extends Event {
 
-	private SortedSequence seq;
 	private ShoppingState state;
-	private double time;
 	private Customer c;
 	
 	/**
@@ -36,9 +34,7 @@ public class LeaveEvent extends Event {
 	/**
 	 * Returnerar tiden då eventet skall exekveras
 	 */
-	public double getTime() {
-		return time;
-	}
+
 	
 	/**
 	 * Returnerar namnet på eventet

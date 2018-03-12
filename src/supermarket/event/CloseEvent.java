@@ -12,8 +12,6 @@ import supermarket.ShoppingState;
  */
 public class CloseEvent extends Event {
 	
-	private double time;
-	private SortedSequence seq;
 	private ShoppingState state;
 	
 	/**
@@ -28,9 +26,8 @@ public class CloseEvent extends Event {
 		this.time = time;
 		
 	}
-	public double getTime() {
-		return time;
-	}
+
+	
 	public String toString() {
 		return "Stänger";
 	}

@@ -2,7 +2,7 @@ package supermarket.event;
 import sim.Event;
 import sim.SimStartEvent;
 import supermarket.ShoppingState;
-import sim.SimulatorStateADT;
+import sim.SimulatorState;
 import sim.SortedSequence;
 import supermarket.customer.CustomerSpawner;
 /**
@@ -16,8 +16,6 @@ import supermarket.customer.CustomerSpawner;
  */
 public class StartEvent extends SimStartEvent {
 	
-	private double time;
-	private SortedSequence seq;
 	private ShoppingState state;
 	
 	/**
@@ -31,9 +29,6 @@ public class StartEvent extends SimStartEvent {
 		this.time=0.00d;
 	}
 
-	public double getTime() {
-		return time;
-	}
 	public String toString() {
 		return "Start";
 	}

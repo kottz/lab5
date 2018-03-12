@@ -13,9 +13,9 @@ public class Simulator {
 
 	EventQueue eq;
 	SortedSequence seq;
-	SimulatorStateADT state;
+	SimulatorState state;
 	
-	public Simulator(EventQueue eq, SimulatorStateADT state) {
+	public Simulator(EventQueue eq, SimulatorState state) {
 		this.eq = eq;
 		this.state = state;
 		this.seq = new SortedSequence(eq);

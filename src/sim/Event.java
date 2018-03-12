@@ -9,12 +9,15 @@ package sim;
 public abstract class Event {
 
 	// Tidsvariabel
-	public double time;
-
+	protected double time;
+	protected SortedSequence seq;
+	
 	// Utför något med hjälp av sekvensen och ett state.
 	public abstract void execute();
 	
 	// Getter för time
-	public abstract double getTime();
+	public double getTime() {
+		return this.time;
+	}
 	
 }

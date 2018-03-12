@@ -12,9 +12,7 @@ import sim.SortedSequence;
  *
  */
 public class ArrivalEvent extends Event {
-	
-	private double time;
-	private SortedSequence seq;
+
 	private ShoppingState state;
 	private Customer c;
 	
@@ -29,9 +27,7 @@ public class ArrivalEvent extends Event {
 		this.seq = seq;
 		this.state = state;
 	}
-	public double getTime() {
-		return time;
-	}
+
 	public String toString() {
 		return "Ankomst";
 	}
@@ -60,8 +56,6 @@ public class ArrivalEvent extends Event {
 			seq.sortEventQueue(new PayEvent(seq, state,c, nextPayTime));
 		
 
-		//state.notifyObservers();
-		//state.hasChanged();
 		}
 		else if (state.isOpen()){
 			
